@@ -5,20 +5,17 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  gap: 20px;
+  gap: var(--gap-medium-sm);
 }
 img {
   width: 65px;
 }
 
-h3 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
+.card-feature .card-feature-title {
+  font-size: var(--font-size-24);
 }
 
-p {
-  font-size: 20px;
-  color: #e0e0e0;
-  font-weight: 400;
+.card-feature .card-feature-text {
+  font-size: var(--font-size-20);
+  text-align: center;
 }

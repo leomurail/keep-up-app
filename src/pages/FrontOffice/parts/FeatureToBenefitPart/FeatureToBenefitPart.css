@@ -1,0 +1,14 @@
+#feature-to-benefit-part {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-large-xs);
+}
+.feature-to-benefit-step {
+  display: flex;
+  gap: var(--gap-medium-m);
+  align-items: start;
+  justify-content: center;
+}

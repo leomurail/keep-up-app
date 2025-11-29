@@ -1,28 +1,37 @@
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 15px 30px;
   border-radius: 5px;
+  gap: var(--gap-small-xl);
   cursor: pointer;
-  color: #ffffff;
+  color: var(--color-text-primary);
   border: none;
-  font-weight: 600;
+  font-weight: var(--font-weight-label);
 }
 
 .btn.primary {
-  background-color: #771cff;
+  background-color: var(--color-purple);
 }
 
 .btn.secondary {
-  background-color: #e345e5;
+  background-color: var(--color-pink);
 }
 
 .btn.l {
-  font-size: 18px;
+  font-size: var(--font-size-18);
 }
 
 .btn.m {
-  font-size: 16px;
+  font-size: var(--font-size-16);
 }
 
 .btn.s {
-  font-size: 14px;
+  font-size: var(--font-size-14);
+}
+
+.btn-img {
+  width: 24px;
+  height: 24px;
 }

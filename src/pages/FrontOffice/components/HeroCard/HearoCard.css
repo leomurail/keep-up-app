@@ -1,27 +1,20 @@
-.card {
-  width: auto;
-  width: fit-content; /* comme “Hug” */
+.hero-card {
   padding: 20px;
-  background: #1a1a1a;
+  background: var(--color-layer-1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: var(--gap-medium-sm);
   border-radius: 6px;
-  border: 1px solid #333333;
-  color: #e0e0e0;
+  border: 1px solid var(--color-layer-2);
 }
 
-.card_title {
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
+.hero-card .hero-card-title {
+  font-size: var(--font-size-20);
 }
 
-.card_text {
+.hero-card .hero-card-text {
   width: 222px;
-  font-size: 16px;
-  font-weight: 500;
   text-align: center;
 }

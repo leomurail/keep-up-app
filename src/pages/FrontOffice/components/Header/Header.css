@@ -6,20 +6,12 @@
   background: linear-gradient(to bottom, #121212 55%, transparent 130%);
 }
 
-.header__nav {
+.header-nav {
   display: flex;
-  gap: 20px;
+  gap: var(--gap-medium-sm);
   padding: 10px;
-  color: #fff;
 }
 
-.header__logo img {
+.header-logo img {
   width: 150px;
-}
-
-.header__nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
 }

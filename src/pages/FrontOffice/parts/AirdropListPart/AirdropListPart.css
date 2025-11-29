@@ -1,0 +1,31 @@
+#airdrop-list-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-large-xs);
+  padding: 100px;
+}
+
+#airdrop-search-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-medium-sm);
+}
+
+#aidrop-liste-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: var(--gap-medium-sm);
+}
+#airdrops-cards-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  grid-template-rows: repeat(3, auto); /* 3 lignes automatiques */
+  gap: 20px;
+}

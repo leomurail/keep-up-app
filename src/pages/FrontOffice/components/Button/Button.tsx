@@ -6,6 +6,9 @@ interface ButtonProps {
   type?: "button";
   variant?: "primary" | "secondary" | "toggle";
   size?: "s" | "m" | "l";
+  imgSrc?: string; // chemin de l'image (optionnel)
+  imgAlt?: string; // texte alternatif (optionnel)
+  imgPosition?: "left" | "right"; // position optionnelle de l'image
 }
 
 export default function Button({
@@ -14,12 +17,21 @@ export default function Button({
   type = "button",
   variant = "primary",
   size = "m",
+  imgSrc,
+  imgAlt = "",
+  imgPosition = "left",
 }: ButtonProps) {
-  const className = `btn ${variant} ${size}`;
+  const className = `btn ${variant} ${size} ${imgSrc ? "btn-with-img" : ""}`;
 
   return (
     <button className={className} onClick={onClick} type={type}>
-      {children}
+      {imgSrc && imgPosition === "left" && (
+        <img src={imgSrc} alt={imgAlt} className="btn-img" />
+      )}
+      <span>{children}</span>
+      {imgSrc && imgPosition === "right" && (
+        <img src={imgSrc} alt={imgAlt} className="btn-img" />
+      )}
     </button>
   );
 }

@@ -2,32 +2,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #333;
+  background-color: var(--color-layer-2);
   border-radius: 8px;
   padding: 10px 15px;
-  max-width: 400px;
+  width: 600px;
 }
 
-.searchbar__input {
+.searchbar-input {
   flex: 1;
   border: none;
   outline: none;
-  font-size: 18px;
-  color: #808080;
+  font-size: var(--desktop-font-size-label);
+  color: var(--color-light-grey);
   background: none;
 }
 
-.searchbar__input::placeholder {
-  color: #808080;
+.searchbar-input::placeholder {
+  color: var(--color-light-grey);
 }
 
-.searchbar__btn {
+.searchbar-btn {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.searchbar__btn img {
+.searchbar-btn img {
   width: 18px;
   height: 18px;
 }

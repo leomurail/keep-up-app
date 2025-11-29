@@ -1,0 +1,26 @@
+.container-how-it-work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-medium-sm);
+}
+
+.number-part-how-it-work .number-part-how-it-work-number {
+  font-size: var(--font-size-40);
+  font-weight: var(--weight-semi-bold);
+}
+
+.container-how-it-work .how-it-work-part-text {
+  font-size: var(--font-size-32);
+  font-weight: var(--weight-medium);
+}
+
+.number-part-how-it-work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 70px;
+  height: 70px;
+  background: var(--color-dark-purple);
+}

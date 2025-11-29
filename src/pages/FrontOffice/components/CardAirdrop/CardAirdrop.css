@@ -3,49 +3,48 @@
   border-radius: 7px;
   padding: 20px;
   color: #e0e0e0;
-  max-width: 350px;
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--gap-medium-sm);
 }
 
-.img_statu {
+.img-statu {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.img_statu img {
+.img-statu img {
   width: 50px;
   border-radius: 5px;
 }
 
-.img_statu p {
-  background: #4800d0;
-  color: #ffffff;
+.img-statu .statu {
+  background: var(--color-secondary);
+  color: var(--color-text-primary);
   padding: 7px 10px;
   border-radius: 3px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-14);
+  font-weight: var(--weight-semi-bold);
 }
 
-.card-airdrop__content {
+.card-airdrop-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: var(--gap-small-xl);
 }
 
-.card-airdrop__content h3 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
+.card-airdrop-content .card-title {
+  font-size: var(--font-size-24);
 }
 
-.card-airdrop__content p {
-  font-size: 20px;
-  color: #ffffff;
+.card-airdrop-content .card-text {
+  font-size: var(--font-size-20);
+  text-align: start;
 }
 
-.Card__cta button {
+.card-cta button {
   width: 100%;
 }

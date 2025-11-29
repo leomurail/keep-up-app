@@ -1,0 +1,15 @@
+#how-it-works-part {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-medium-l);
+}
+.how-it-works-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium-m);
+  align-items: start;
+  justify-content: center;
+}

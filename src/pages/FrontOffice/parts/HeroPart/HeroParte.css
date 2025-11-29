@@ -1,0 +1,77 @@
+#hero-part {
+  background-image: url("/img/webp/bg-hero.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--gap-large-l);
+  padding: 140px 0 40px 0;
+}
+#hero-part .round-btn {
+  position: absolute;
+  top: 95%;
+  left: 95%;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-medium-l);
+  padding-bottom: 100px;
+}
+.hero-content-logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-small-xl);
+}
+.hero-content-logo-title .hero-logo {
+  width: 165px;
+}
+
+.hero-content-logo-title .hero-title {
+  font-size: var(--font-size-56);
+  color: var(--color-text-secondary);
+  line-height: 50px;
+}
+
+.hero-content-text-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-medium-sm);
+}
+.hero-content-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-small-xl);
+}
+.hero-content-text .hero-text-claim {
+  font-size: var(--size-25);
+  font-weight: var(--weight-semi-bold);
+}
+.hero-content-text .hero-text-instal {
+  font-size: var(--size-20);
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-small-xl);
+}
+
+.hero-container-cards {
+  display: flex;
+  gap: var(--gap-medium-sm);
+  justify-content: center;
+}

@@ -7,9 +7,9 @@ interface HeroCardProps {
 
 export default function HeroCard({ title, text }: HeroCardProps) {
   return (
-    <div className="card">
-      <h3 className="card_title">{title}</h3>
-      <p className="card_text">{text}</p>
+    <div className="hero-card">
+      <h3 className="hero-card-title">{title}</h3>
+      <p className="hero-card-text">{text}</p>
     </div>
   );
 }

@@ -15,15 +15,15 @@ export default function CardAirdrop({
 }: CardAirdropProps) {
   return (
     <div className="card-airdrop">
-      <div className="img_statu">
+      <div className="img-statu">
         <img src={imgSrc} alt={title} />
-        <p>{statu}</p>
+        <p className="statu">{statu}</p>
       </div>
-      <div className="card-airdrop__content">
-        <h3>{title}</h3>
-        <p>{text}</p>
+      <div className="card-airdrop-content">
+        <h3 className="card-title">{title}</h3>
+        <p className="card-text">{text}</p>
       </div>
-      <div className="Card__cta">
+      <div className="card-cta">
         <Button variant="primary" size="m">
           Voir plus
         </Button>

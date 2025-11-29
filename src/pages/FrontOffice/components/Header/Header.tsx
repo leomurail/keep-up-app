@@ -4,11 +4,11 @@ import Button from "../Button/Button";
 export default function Header() {
   return (
     <header className="header">
-      <div className="header__logo">
-        <img src="/img/logo_keepup.webp" alt="Logo" />
+      <div className="header-logo">
+        <img src="/img/webp/logo-keepup.webp" alt="Logo" />
       </div>
 
-      <nav className="header__nav">
+      <nav className="header-nav">
         <a href="#hero">Liste des airdrops</a>
         <a href="#features">La solution</a>
         <a href="#pricing">Chiffres clés</a>
@@ -16,7 +16,7 @@ export default function Header() {
         <a href="#contact">Comment ça marche ?</a>
       </nav>
 
-      <div className="header__cta">
+      <div className="header-cta">
         <Button variant="secondary" size="s">
           Rester informé
         </Button>
