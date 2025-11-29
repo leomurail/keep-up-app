@@ -1,0 +1,20 @@
+div.social-media-input-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.social-media-input-collection .top {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+div.social-media-input-collection h3.title {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+div.social-media-input-collection button.add-social-media {
+  width: fit-content;
+}

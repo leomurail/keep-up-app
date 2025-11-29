@@ -5,6 +5,7 @@ import { Button } from "@/components/shadcdn/ui/button";
 import FormWrapper from "@/pages/BackOffice/components/FormWrapper/FormWrapper";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import "./AirdropForm.css";
+import SocialMediaInputCollection from "../SocialMediaInputCollection/SocialMediaInputCollection";
 
 interface AirdropFormProps {
   form?: UseFormReturn<FieldValues, any, FieldValues>;
@@ -92,6 +93,8 @@ export default function AirdropForm({ form }: AirdropFormProps) {
         label="Description"
         placeholder="Description..."
       />
+
+      <SocialMediaInputCollection form={formValue} />
 
       <Button type="submit">Sauvegarder</Button>
     </FormWrapper>

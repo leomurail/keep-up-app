@@ -6,7 +6,7 @@ export default function DashboardAirdrop() {
     <DashboardViewWrapper
       title="Dashboard Airdrop"
       id="dashboard-airdrop"
-      createRoute="/back-office/dashboard/airdrops/create"
+      createRoute="/back-office/dashboard/airdrop/create"
     >
       <Outlet />
     </DashboardViewWrapper>
