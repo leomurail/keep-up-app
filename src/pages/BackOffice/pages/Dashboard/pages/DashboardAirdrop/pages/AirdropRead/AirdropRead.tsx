@@ -91,7 +91,7 @@ export default function AirdropRead() {
                     height={25}
                     alt="social media"
                   />
-                  <span className="social-name">Landing</span>
+                  <span className="social-name">app</span>
                 </div>
               </div>
             </TableCell>

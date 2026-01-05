@@ -7,7 +7,7 @@ export default function AirdropUpdate() {
       name: "Jhon Doe",
       category: "first",
       status: "waiting",
-      link: "https://landing-page.com",
+      link: "https://app-page.com",
       description: "Lorem ipsum dolor sit amet",
     },
   });

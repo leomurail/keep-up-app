@@ -1,4 +1,4 @@
-import { Home, Inbox } from "lucide-react";
+import { Home, Inbox, type LucideProps } from "lucide-react";
 
 import {
   Sidebar,
@@ -18,7 +18,7 @@ import "./AppSideBar.css";
 interface menuItem {
   title: string;
   url: string;
-  icon: any;
+  icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
   items?: menuItem[];
 }
 

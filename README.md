@@ -1,48 +1,40 @@
-# Landing page
+# app page
 
-## Getting Started
+## Prerequisites
+- Docker
+- Docker Compose
+- Make
 
-### Start install
+## Environment variables
+You can config the app settings in `./.env` file.
 
+## Installation
+
+### Install & start services
 ```bash
-$ npm install
+make up
+```
+Go to http://app.keep-up.local
+
+### Uninstall & stop services
+```bash
+make down
 ```
 
-### Run start
+## Services
 
+### Start
 ```bash
-$ npm run dev
+make start
+```
+Go to http://app.keep-up.local
+
+### Stop
+```bash
+make stop
 ```
 
-## Deployement
-
-### Run build
-
+## Clean
 ```bash
-$ npm run build
+make clean
 ```
-
-### Run preview
-
-```bash
-$ npm run preview
-```
-
-## Tests
-
-### Run ESLint tests
-
-```bash
-$ npm run lint
-```
-
-Les fichiers construit vont dans /dist
-
-## To Do
-
-- css pascalcase to kebabcase (KeyStat => key-stat) => done
-- add logo-keepup.webp in the public folder => done
-- adapt style to the maquette (review) => done
-- do last components (footer, roundbtn) => done
-
-- do integration (page)

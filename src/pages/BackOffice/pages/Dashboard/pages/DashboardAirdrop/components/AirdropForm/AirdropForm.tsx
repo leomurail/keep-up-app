@@ -6,13 +6,15 @@ import FormWrapper from "@/pages/BackOffice/components/FormWrapper/FormWrapper";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import "./AirdropForm.css";
 import SocialMediaInputCollection from "../SocialMediaInputCollection/SocialMediaInputCollection";
+import type { Context } from "react";
 
 interface AirdropFormProps {
-  form?: UseFormReturn<FieldValues, any, FieldValues>;
+  form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
 }
 
 export default function AirdropForm({ form }: AirdropFormProps) {
-  const formValue = form || useForm();
+  const hookForm = useForm();
+  const formValue = form || hookForm;
 
   const categoryOptions = [
     {
@@ -81,7 +83,7 @@ export default function AirdropForm({ form }: AirdropFormProps) {
 
       <InputField
         form={formValue}
-        placeholder="https://landing.page"
+        placeholder="https://app.page"
         label="Lien"
         name="link"
         type="url"

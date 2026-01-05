@@ -2,13 +2,15 @@ import FormWrapper from "@/pages/BackOffice/components/FormWrapper/FormWrapper";
 import InputField from "@/pages/BackOffice/components/InputField/InputField";
 import { Button } from "@/components/shadcdn/ui/button";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
+import type { Context } from "react";
 
 interface CategoryFormProps {
-  form?: UseFormReturn<FieldValues, any, FieldValues>;
+  form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
 }
 
 export default function CategoryForm({ form }: CategoryFormProps) {
-  const formValue = form || useForm();
+  const hookForm = useForm();
+  const formValue = form || hookForm;
 
   return (
     <FormWrapper form={formValue} className="airdrop-form">

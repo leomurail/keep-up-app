@@ -1,0 +1,28 @@
+name: Deploy Preprod
+
+on:
+  push:
+    branches:
+      - release-next
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create destination directory
+        run: mkdir -p ~/preprod/${{ secrets.SSH_PATH }}
+
+      - name: Deploy to directory
+        run: |
+          rsync -avz --delete \
+            --exclude '.git' \
+            --exclude '.github' \
+            ./ ~/preprod/${{ secrets.SSH_PATH }}
+
+      - name: Initialize Application
+        run: |
+          cd ~/preprod/${{ secrets.SSH_PATH }}
+          make init APP_ENV=preprod

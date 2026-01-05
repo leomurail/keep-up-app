@@ -11,4 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    host: true,
+    port: Number(process.env.APP_PORT) || 3000,
+    allowedHosts: ["app.keep-up.traefik.me"],
+  },
 })

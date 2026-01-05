@@ -13,7 +13,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     checkLogin();
-  }, []);
+  }, [checkLogin]);
 
   return (
     <section id="dashboard">

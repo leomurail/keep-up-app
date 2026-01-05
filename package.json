@@ -1,5 +1,5 @@
 {
-  "name": "landing-poc",
+  "name": "keep-up-poc",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

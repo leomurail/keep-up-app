@@ -9,9 +9,10 @@ import {
 
 import "./SocialMediaInputCollection.css";
 import { Trash } from "lucide-react";
+import type { Context } from "react";
 
 interface SocialsFormProps {
-  form: UseFormReturn<FieldValues, any, FieldValues>;
+  form: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
 }
 
 const socialOptions = [
