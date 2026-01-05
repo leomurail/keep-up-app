@@ -21,7 +21,7 @@ FROM nginx:stable-alpine AS production
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Configuration Nginx (utilisera APP_PORT injecté par docker-compose)
-COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY docker/nginx/templates/default.conf.template /etc/nginx/templates/default.conf.template
 
 CMD ["nginx", "-g", "daemon off;"]
 
