@@ -1,24 +1,33 @@
-FROM node:lts-alpine
-
+# ———————————————————————————————————————
+# ETAPE 1 : BASE
+# ———————————————————————————————————————
+FROM node:lts-alpine AS base
 WORKDIR /app
-
 COPY package*.json ./
-
 RUN npm install
-
 COPY . .
 
-# Le "if" ici fonctionne car NODE_ENV est défini plus haut
-RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
+# ———————————————————————————————————————
+# ETAPE 2 : BUILD
+# ———————————————————————————————————————
+FROM base AS build-stage
+RUN npm run build
 
-# On utilise une valeur par défaut pour le port si APP_PORT n'est pas défini
-EXPOSE ${APP_PORT}
+# ———————————————————————————————————————
+# ETAPE 3 : PRODUCTION (Nginx)
+# ———————————————————————————————————————
+FROM nginx:stable-alpine AS production
+# On copie les fichiers de build
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-# Correction finale du bloc CMD
-CMD if [ "$NODE_ENV" = "development" ]; then \
-    npm run dev; \
-    elif [ "$NODE_ENV" = "production" ]; then \
-    npm run start; \
-    else \
-    npm run start; \
-    fi
+# Configuration Nginx (utilisera APP_PORT injecté par docker-compose)
+COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
+
+CMD ["nginx", "-g", "daemon off;"]
+
+# ———————————————————————————————————————
+# ETAPE 4 : DEVELOPMENT (Node)
+# ———————————————————————————————————————
+FROM base AS development
+
+CMD ["npm", "run", "dev"]
