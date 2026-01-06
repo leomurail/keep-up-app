@@ -6,6 +6,10 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+      target: ${NODE_ENV}
+      args:
+        - NODE_ENV=${NODE_ENV}
+        - APP_PORT=${APP_PORT}
     environment:
       - NODE_ENV=${NODE_ENV}
       - APP_PORT=${APP_PORT}
