@@ -10,6 +10,9 @@ services:
       args:
         - NODE_ENV=${NODE_ENV}
         - APP_PORT=${APP_PORT}
+    volumes:
+      - .:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=${NODE_ENV}
       - APP_PORT=${APP_PORT}

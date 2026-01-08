@@ -1,0 +1,6 @@
+services:
+  app:
+    labels:
+      traefik.http.routers.${APP_NAME}.entrypoints: web
+      traefik.http.routers.${APP_NAME}.tls: false
+      traefik.http.routers.${APP_NAME}.tls.certresolver: ""
