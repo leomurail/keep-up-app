@@ -18,7 +18,6 @@ services:
       - APP_PORT=${APP_PORT}
     networks:
       - traefik-net
-      - default
     labels:
       traefik.enable: true
       traefik.http.routers.${APP_NAME}.rule: Host(`${APP_DOMAIN}`)
