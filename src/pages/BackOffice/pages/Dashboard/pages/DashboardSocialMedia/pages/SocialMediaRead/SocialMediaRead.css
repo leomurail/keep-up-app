@@ -1,8 +1,0 @@
-#social-media-read table {
-  max-width: 300px;
-  font-size: 18px;
-}
-
-#social-media-read table td:first-child {
-  background-color: var(--secondary);
-}

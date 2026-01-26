@@ -8,8 +8,7 @@ import {
 } from "@/components/shadcdn/ui/table";
 import { client } from "@/instance";
 import type { SocialMedia } from "@/clients/KeepUpClient/Ressources/types";
-
-import "./SocialMediaRead.css";
+import { getConfig } from "@/utils";
 
 export default function SocialMediaRead() {
   const { id } = useParams<{ id: string }>();
@@ -40,7 +39,7 @@ export default function SocialMediaRead() {
   if (!socialMedia) return <div>Social Media not found</div>;
 
   return (
-    <section id="social-media-read">
+    <section id="social-media-read" className="read-table">
       <Table>
         <TableBody>
           <TableRow className="w-[30%]">
@@ -56,7 +55,7 @@ export default function SocialMediaRead() {
             <TableCell>
               {socialMedia.image ? (
                 <img
-                  src={socialMedia.image.src}
+                  src={getConfig("VITE_API_URL") + "/api/images/" + socialMedia.image.src}
                   alt={socialMedia.image.alt || socialMedia.label}
                   width={150}
                   height={150}

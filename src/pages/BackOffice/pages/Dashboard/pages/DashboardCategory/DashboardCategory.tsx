@@ -4,7 +4,7 @@ import DashboardViewWrapper from "../../components/DashboardViewWrapper/Dashboar
 export default function DashboardCategory() {
   return (
     <DashboardViewWrapper
-      title="Dashboard category"
+      title="Dashboard Category"
       id="dashboard-category"
       createRoute="/back-office/dashboard/category/create"
     >

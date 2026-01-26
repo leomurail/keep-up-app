@@ -6,8 +6,6 @@ import { useAuth } from "@/hooks/useAuth/useAuth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
-import "./LoginForm.css";
-
 interface LoginFormProps {
   redirectTo: string;
 }
@@ -43,7 +41,7 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
 
   return (
     <div className="login-wrapper">
-      <FormWrapper form={form} onSubmit={handleLogin} className="login-form">
+      <FormWrapper form={form} onSubmit={handleLogin} className="dashboard-form">
         <CustomField
           form={form}
           name="userName"

@@ -50,7 +50,6 @@ export interface AirdropEvent {
 export interface User {
     id: number;
     email: string;
-    userIdentifier: string;
     roles: string[];
     password?: string; // Only for creation/update, usually not in response
     token?: string | null;

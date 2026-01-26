@@ -49,6 +49,11 @@ export default function AppSidebar() {
       url: "/back-office/dashboard/status/list",
       icon: Inbox,
     },
+    {
+      title: "Users",
+      url: "/back-office/dashboard/users/list",
+      icon: Inbox,
+    },
   ];
 
   return (

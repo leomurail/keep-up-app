@@ -1,40 +1,40 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
 import { client } from "@/instance";
-import type { Status } from "@/clients/KeepUpClient/Ressources/types";
+import type { User } from "@/clients/KeepUpClient/Ressources/types";
 
-export default function StatusList() {
-    const [statuses, setStatuses] = useState<Status[]>([]);
+export default function UserList() {
+    const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchStatuses = async () => {
+        const fetchUsers = async () => {
             try {
-                const data = await client.status.list();
-                setStatuses(data);
+                const data = await client.users.list();
+                setUsers(data);
             } catch (err) {
-                setError(err instanceof Error ? err.message : "Failed to fetch statuses");
+                setError(err instanceof Error ? err.message : "Failed to fetch users");
                 console.error(err);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchStatuses();
+        fetchUsers();
     }, []);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <section id="status-list">
-            {statuses.map((status) => (
+        <section id="user-list">
+            {users.map((user) => (
                 <DashboardCard
-                    key={status.id}
-                    id={status.id}
-                    title={status.label}
-                    name="status"
+                    key={user.id}
+                    id={user.id}
+                    title={user.email}
+                    name="users"
                 />
             ))}
         </section>

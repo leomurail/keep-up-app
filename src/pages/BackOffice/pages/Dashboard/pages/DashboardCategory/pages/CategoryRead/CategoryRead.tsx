@@ -9,8 +9,6 @@ import {
 import { client } from "@/instance";
 import type { Category } from "@/clients/KeepUpClient/Ressources/types";
 
-import "./CategoryRead.css";
-
 export default function CategoryRead() {
   const { id } = useParams<{ id: string }>();
   const [category, setCategory] = useState<Category | null>(null);
@@ -40,7 +38,7 @@ export default function CategoryRead() {
   if (!category) return <div>Category not found</div>;
 
   return (
-    <section id="category-read">
+    <section id="category-read" className="read-table">
       <Table>
         <TableBody>
           <TableRow className="w-[30%]">

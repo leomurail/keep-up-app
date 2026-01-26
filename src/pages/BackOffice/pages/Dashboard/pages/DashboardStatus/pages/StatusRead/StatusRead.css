@@ -1,8 +1,0 @@
-#status-read table {
-    max-width: 300px;
-    font-size: 18px;
-}
-
-#status-read table td:first-child {
-    background-color: var(--secondary);
-}

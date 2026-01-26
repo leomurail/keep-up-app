@@ -34,6 +34,13 @@ import StatusUpdate from "./pages/BackOffice/pages/Dashboard/pages/DashboardStat
 import StatusRead from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusRead/StatusRead.tsx";
 import StatusDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusDelete/StatusDelete.tsx";
 
+import DashboardUser from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/DashboardUser.tsx";
+import UserList from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserList/UserList.tsx";
+import UserCreate from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserCreate/UserCreate.tsx";
+import UserRead from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserRead/UserRead.tsx";
+import UserUpdate from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserUpdate/UserUpdate.tsx";
+import UserDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserDelete/UserDelete.tsx";
+
 createRoot(document.getElementById("root") as Container).render(
   <StrictMode>
     <BrowserRouter>
@@ -73,6 +80,13 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="read/:id" element={<StatusRead />} />
                 <Route path="update/:id" element={<StatusUpdate />} />
                 <Route path="delete/:id" element={<StatusDelete />} />
+              </Route>
+              <Route path="users" element={<DashboardUser />}>
+                <Route path="list" element={<UserList />} />
+                <Route path="create" element={<UserCreate />} />
+                <Route path="read/:id" element={<UserRead />} />
+                <Route path="update/:id" element={<UserUpdate />} />
+                <Route path="delete/:id" element={<UserDelete />} />
               </Route>
             </Route>
           </Route>
