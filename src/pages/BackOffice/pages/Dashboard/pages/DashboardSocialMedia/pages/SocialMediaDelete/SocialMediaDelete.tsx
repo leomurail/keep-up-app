@@ -18,7 +18,7 @@ export default function SocialMediaDelete() {
 
   return (
     <section id="social-media-delete" className="flex flex-col gap-4 p-4">
-      <h1>Are you sure you want to delete this social media?</h1>
+      <h2>Are you sure to want to delete ?</h2>
       <div className="flex gap-2">
         <Button variant="destructive" onClick={handleDelete}>Yes, Delete</Button>
         <Button variant="secondary" onClick={() => navigate("/back-office/dashboard/social-media/list")}>Cancel</Button>

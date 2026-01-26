@@ -9,8 +9,6 @@ import {
 } from "@/components/shadcdn/ui/table";
 import type { Status } from "@/clients/KeepUpClient/Ressources/types";
 
-import "./StatusRead.css";
-
 export default function StatusRead() {
     const { id } = useParams<{ id: string }>();
     const [status, setStatus] = useState<Status | null>(null);
@@ -27,7 +25,7 @@ export default function StatusRead() {
     if (!status) return <div>Status not found</div>;
 
     return (
-        <section id="status-read">
+        <section id="status-read" className="read-table">
             <Table>
                 <TableBody>
                     <TableRow className="w-[30%]">

@@ -5,7 +5,6 @@ import TextAreaField from "@/pages/BackOffice/components/TextAreaField/TextAreaF
 import { Button } from "@/components/shadcdn/ui/button";
 import FormWrapper from "@/pages/BackOffice/components/FormWrapper/FormWrapper";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
-import "./AirdropForm.css";
 import SocialMediaInputCollection from "../SocialMediaInputCollection/SocialMediaInputCollection";
 import type { Context } from "react";
 import { client } from "@/instance";
@@ -56,7 +55,7 @@ export default function AirdropForm({ form, onSubmit }: AirdropFormProps) {
   }, []);
 
   return (
-    <FormWrapper form={formValue} className="airdrop-form" onSubmit={onSubmit}>
+    <FormWrapper form={formValue} className="dashboard-form" onSubmit={onSubmit}>
       <InputField
         form={formValue}
         placeholder="Nom..."

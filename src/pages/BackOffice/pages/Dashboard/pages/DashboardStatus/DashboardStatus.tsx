@@ -5,7 +5,7 @@ import DashboardViewWrapper from "../../components/DashboardViewWrapper/Dashboar
 export default function DashboardStatus() {
     return (
         <DashboardViewWrapper
-            title="Dashboard statut"
+            title="Dashboard Status"
             id="dashboard-status"
             createRoute="/back-office/dashboard/status/create"
         >

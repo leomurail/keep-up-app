@@ -4,7 +4,7 @@ import DashboardViewWrapper from "../../components/DashboardViewWrapper/Dashboar
 export default function DashboardSocialMedia() {
   return (
     <DashboardViewWrapper
-      title="Dashboard social media"
+      title="Dashboard Social Media"
       id="dashboard-social-media"
       createRoute="/back-office/dashboard/social-media/create"
     >

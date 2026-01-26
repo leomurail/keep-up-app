@@ -9,8 +9,7 @@ import {
 import { Button } from "@/components/shadcdn/ui/button";
 import { client } from "@/instance";
 import type { AirdropEvent } from "@/clients/KeepUpClient/Ressources/types";
-
-import "./AirdropRead.css";
+import { getConfig } from "@/utils";
 
 export default function AirdropRead() {
   const { id } = useParams<{ id: string }>();
@@ -41,7 +40,7 @@ export default function AirdropRead() {
   if (!airdrop) return <div>Airdrop not found</div>;
 
   return (
-    <section id="airdrop-read">
+    <section id="airdrop-read" className="read-table">
       <Table>
         <TableBody>
           <TableRow>
@@ -59,7 +58,7 @@ export default function AirdropRead() {
             <TableCell className="w-[70%]">
               {airdrop.image ? (
                 <img
-                  src={airdrop.image.src}
+                  src={getConfig("VITE_API_URL") + "/api/images/" + airdrop.image.src}
                   width={120}
                   height={120}
                   alt={airdrop.image.alt || "Airdrop logo"}
@@ -106,7 +105,7 @@ export default function AirdropRead() {
                     <div key={sm.id} className="flex flex-col items-center">
                       {sm.socialMedia?.image ? (
                         <img
-                          src={sm.socialMedia.image.src}
+                          src={getConfig("VITE_API_URL") + "/api/images/" + sm.socialMedia.image.src}
                           width={25}
                           height={25}
                           alt={sm.socialMedia.label}

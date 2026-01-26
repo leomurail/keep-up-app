@@ -1,3 +1,14 @@
+import { Outlet } from "react-router";
+import DashboardViewWrapper from "../../components/DashboardViewWrapper/DashboardViewWrapper";
+
 export default function DashboardUser() {
-  return <h1>User</h1>;
+  return (
+    <DashboardViewWrapper
+      title="Dashboard Users"
+      id="dashboard-user"
+      createRoute="/back-office/dashboard/users/create"
+    >
+      <Outlet />
+    </DashboardViewWrapper>
+  );
 }

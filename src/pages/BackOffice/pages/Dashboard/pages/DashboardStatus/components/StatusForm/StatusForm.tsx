@@ -4,8 +4,6 @@ import { Button } from "@/components/shadcdn/ui/button";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import type { Context } from "react";
 
-import "./StatusForm.css"
-
 interface StatusFormProps {
     form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
     onSubmit?: (data: FieldValues) => void;
@@ -21,7 +19,7 @@ export default function StatusForm({ form, onSubmit }: StatusFormProps) {
     const formValue = form || hookForm;
 
     return (
-        <FormWrapper form={formValue} className="status-form" onSubmit={onSubmit}>
+        <FormWrapper form={formValue} className="dashboard-form" onSubmit={onSubmit}>
             <InputField
                 form={formValue}
                 placeholder="Label..."

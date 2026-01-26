@@ -1,8 +1,0 @@
-#category-read table {
-  max-width: 300px;
-  font-size: 18px;
-}
-
-#category-read table td:first-child {
-  background-color: var(--secondary);
-}

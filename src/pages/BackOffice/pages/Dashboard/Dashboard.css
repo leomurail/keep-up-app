@@ -48,3 +48,56 @@
 #dashboard .info {
   font-size: 14px;
 }
+
+
+/*Read*/
+
+.read-table table {
+  max-width: 300px;
+  font-size: 18px;
+}
+
+.read-table table td:first-child {
+  background-color: var(--secondary);
+}
+
+.read-table .social-medias {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.read-table p {
+  font-size: 16px;
+}
+
+.read-table .social-medias div {
+  width: 60px;
+}
+
+.read-table .social-medias img {
+  width: 30px;
+  border-radius: 100px;
+  margin: auto;
+  display: block;
+}
+
+.read-table .social-medias .social-name {
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/*Form*/
+
+.dashboard-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dashboard-form button[type="submit"] {
+  width: fit-content;
+}
