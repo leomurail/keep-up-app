@@ -1,9 +1,10 @@
 import { KeepUpClient } from './clients/KeepUpClient';
 import { Cookies } from 'react-cookie';
+import { getConfig } from './utils';
 
 const cookies = new Cookies();
 // TODO: Load from env var
-const BASE_URL = 'http://api.keep-up.traefik.me';
+const BASE_URL = getConfig("API_DOMAIN");
 
 export const client = new KeepUpClient(BASE_URL);
 
