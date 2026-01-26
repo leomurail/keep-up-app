@@ -27,15 +27,32 @@ export default function InputField<T extends FieldValues>({
     <FormField
       control={form.control}
       name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <FormControl>
-            <Input placeholder={placeholder} {...field} type={type} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
+      render={({ field }) => {
+        const isFile = type === "file";
+
+        const fileProps = isFile ?
+          {
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+              field.onChange(e.target.files);
+            }
+          } : {};
+
+        return (
+          <FormItem>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Input
+                placeholder={placeholder}
+                type={type}
+                {...field}
+                value={isFile ? undefined : field.value}
+                {...fileProps}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        );
+      }}
     />
   );
 }

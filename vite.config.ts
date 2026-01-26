@@ -15,5 +15,5 @@ export default defineConfig({
     host: true,
     port: Number(process.env.APP_PORT) || 3000,
     allowedHosts: ["app.keep-up.traefik.me"],
-  },
+},
 })

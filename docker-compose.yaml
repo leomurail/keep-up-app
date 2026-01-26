@@ -1,8 +1,8 @@
-name: ${PROJECT_NAME}_${NODE_ENV}
+name: ${APP_NAME}_${NODE_ENV}
 services:
   app:
-    container_name: ${PROJECT_NAME}.${NODE_ENV}
-    image: ${PROJECT_NAME}.${NODE_ENV}:latest
+    container_name: ${APP_NAME}.${NODE_ENV}
+    image: ${APP_NAME}.${NODE_ENV}:latest
     build:
       context: .
       dockerfile: docker/Dockerfile
@@ -10,19 +10,21 @@ services:
       args:
         - NODE_ENV=${NODE_ENV}
         - APP_PORT=${APP_PORT}
+    volumes:
+      - .:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=${NODE_ENV}
       - APP_PORT=${APP_PORT}
     networks:
       - traefik-net
-      - default
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${APP_DOMAIN}`)"
-      - "traefik.http.routers.${PROJECT_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.${PROJECT_NAME}.tls=true"
-      - "traefik.http.routers.${PROJECT_NAME}.tls.certresolver=myresolver"
-      - "traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=${APP_PORT}"
+      - "traefik.http.routers.${APP_NAME}.rule=Host(`${APP_DOMAIN}`)"
+      - "traefik.http.routers.${APP_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${APP_NAME}.tls=true"
+      - "traefik.http.routers.${APP_NAME}.tls.certresolver=myresolver"
+      - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=${APP_PORT}"
 networks:
   traefik-net:
     external: true

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import InputField from "@/pages/BackOffice/components/InputField/InputField";
 import SelectField from "@/pages/BackOffice/components/SelectField/SelectField";
 import TextAreaField from "@/pages/BackOffice/components/TextAreaField/TextAreaField";
@@ -7,55 +8,55 @@ import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import "./AirdropForm.css";
 import SocialMediaInputCollection from "../SocialMediaInputCollection/SocialMediaInputCollection";
 import type { Context } from "react";
+import { client } from "@/instance";
 
 interface AirdropFormProps {
   form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
+  onSubmit?: (data: FieldValues) => void;
 }
 
-export default function AirdropForm({ form }: AirdropFormProps) {
-  const hookForm = useForm();
+export default function AirdropForm({ form, onSubmit }: AirdropFormProps) {
+  const hookForm = useForm<FieldValues>({
+    defaultValues: {
+      name: "",
+      category: "",
+      status: "",
+      link: "",
+      description: "",
+      socialMedia: [],
+    },
+  });
   const formValue = form || hookForm;
 
-  const categoryOptions = [
-    {
-      value: "first",
-      label: "first",
-    },
-    {
-      value: "second",
-      label: "second",
-    },
-    {
-      value: "third",
-      label: "third",
-    },
-    {
-      value: "fourth",
-      label: "fourth",
-    },
-  ];
+  const [categories, setCategories] = useState<{ value: string, label: string }[]>([]);
+  const [statusOptions, setStatusOptions] = useState<{ value: string, label: string }[]>([]);
+  const [socialOptions, setSocialOptions] = useState<{ value: string, label: string }[]>([]);
 
-  const statusOptions = [
-    {
-      value: "waiting",
-      label: "En attente",
-    },
-    {
-      value: "in_progress",
-      label: "En cours",
-    },
-    {
-      value: "to_claim",
-      label: "À récupérer",
-    },
-    {
-      value: "finished",
-      label: "Terminé",
-    },
-  ];
+  useEffect(() => {
+    client.categories.list().then(cats => {
+      setCategories(cats.map(c => ({
+        value: c.id.toString(),
+        label: c.label
+      })));
+    }).catch(console.error);
+
+    client.status.list().then(statuses => {
+      setStatusOptions(statuses.map(s => ({
+        value: s.id.toString(),
+        label: s.label
+      })));
+    }).catch(console.error);
+
+    client.socialMedia.list().then(medias => {
+      setSocialOptions(medias.map(m => ({
+        value: m.id.toString(),
+        label: m.label
+      })));
+    }).catch(console.error);
+  }, []);
 
   return (
-    <FormWrapper form={formValue} className="airdrop-form">
+    <FormWrapper form={formValue} className="airdrop-form" onSubmit={onSubmit}>
       <InputField
         form={formValue}
         placeholder="Nom..."
@@ -65,7 +66,7 @@ export default function AirdropForm({ form }: AirdropFormProps) {
 
       <SelectField
         label="Categorie"
-        options={categoryOptions}
+        options={categories}
         name="category"
         placeholder="Pas de categorie"
         form={formValue}
@@ -96,7 +97,7 @@ export default function AirdropForm({ form }: AirdropFormProps) {
         placeholder="Description..."
       />
 
-      <SocialMediaInputCollection form={formValue} />
+      <SocialMediaInputCollection form={formValue} options={socialOptions} />
 
       <Button type="submit">Sauvegarder</Button>
     </FormWrapper>

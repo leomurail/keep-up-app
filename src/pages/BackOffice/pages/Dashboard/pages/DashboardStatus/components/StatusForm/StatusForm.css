@@ -1,0 +1,10 @@
+.status-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status-form button[type="submit"] {
+    width: fit-content;
+}

@@ -13,19 +13,13 @@ import type { Context } from "react";
 
 interface SocialsFormProps {
   form: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
+  options: { value: string, label: string }[];
 }
 
-const socialOptions = [
-  { value: "twitter", label: "Twitter" },
-  { value: "discord", label: "Discord" },
-  { value: "telegram", label: "Telegram" },
-  { value: "website", label: "Website" },
-];
-
-export default function SocialMediaInputCollection({ form }: SocialsFormProps) {
+export default function SocialMediaInputCollection({ form, options }: SocialsFormProps) {
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "social_media",
+    name: "socialMedia",
   });
 
   return (
@@ -45,14 +39,14 @@ export default function SocialMediaInputCollection({ form }: SocialsFormProps) {
         <div key={item.id} className="flex items-end gap-2">
           <SelectField
             form={form}
-            name={`socials.${index}.type`}
+            name={`socialMedia.${index}.type`}
             label="Type"
-            options={socialOptions}
+            options={options}
             placeholder="Choisir un réseau"
           />
           <InputField
             form={form}
-            name={`socials.${index}.link`}
+            name={`socialMedia.${index}.link`}
             label="Lien"
             placeholder="https://..."
             type="url"
