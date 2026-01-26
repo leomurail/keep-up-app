@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
     plugins: [react(), tailwindcss()],
-    envPrefix: ['VITE_', 'APP_'],
+    envPrefix: ['VITE_'],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: true,
-      port: Number(env.APP_PORT) || 3000,
-      allowedHosts: [env.APP_DOMAIN || ""],
+      port: Number(env.VITE_APP_PORT) || 3000,
+      allowedHosts: [env.VITE_APP_DOMAIN || ""],
     },
   }
 })

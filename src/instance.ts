@@ -3,12 +3,9 @@ import { Cookies } from 'react-cookie';
 import { getConfig } from './utils';
 
 const cookies = new Cookies();
-// TODO: Load from env var
-const BASE_URL = getConfig("API_DOMAIN");
-
+const BASE_URL = getConfig("VITE_API_URL");
 export const client = new KeepUpClient(BASE_URL);
 
-// Hydrate token from cookies if available
 const token = cookies.get('token');
 if (token) {
     client.setToken(token);
