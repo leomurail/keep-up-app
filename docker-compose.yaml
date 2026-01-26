@@ -9,22 +9,24 @@ services:
       target: ${NODE_ENV}
       args:
         - NODE_ENV=${NODE_ENV}
-        - APP_PORT=${APP_PORT}
+        - VITE_APP_PORT=${VITE_APP_PORT}
     volumes:
       - .:/app
       - /app/node_modules
     environment:
       - NODE_ENV=${NODE_ENV}
-      - APP_PORT=${APP_PORT}
+      - VITE_APP_PORT=${VITE_APP_PORT}
+      - VITE_API_URL=${VITE_API_URL}
+      - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
     networks:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${APP_NAME}.rule=Host(`${APP_DOMAIN}`)"
+      - "traefik.http.routers.${APP_NAME}.rule=Host(`${VITE_APP_DOMAIN}`)"
       - "traefik.http.routers.${APP_NAME}.entrypoints=websecure"
       - "traefik.http.routers.${APP_NAME}.tls=true"
       - "traefik.http.routers.${APP_NAME}.tls.certresolver=myresolver"
-      - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=${APP_PORT}"
+      - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=${VITE_APP_PORT}"
 networks:
   traefik-net:
     external: true

@@ -43,10 +43,10 @@ rm-env:
 	@rm ./.env
 
 add-host:
-	@echo "127.0.0.1 ${APP_DOMAIN}" | sudo tee -a $(HOSTS_FILE)
+	@echo "127.0.0.1 ${VITE_APP_DOMAIN}" | sudo tee -a $(HOSTS_FILE)
 
 rm-host:
-	@sudo $(SED) "/${APP_DOMAIN}/d" $(HOSTS_FILE)
+	@sudo $(SED) "/${VITE_APP_DOMAIN}/d" $(HOSTS_FILE)
 
 up:
 	@$(COMPOSE_CMD) up -d --build --renew-anon-volumes
