@@ -13,11 +13,11 @@ export default function CategoryRead() {
       <Table>
         <TableBody>
           <TableRow className="w-[30%]">
-            <TableCell className="text-center">Nom</TableCell>
+            <TableCell className="text-center font-bold">Nom</TableCell>
             <TableCell>Category</TableCell>
           </TableRow>
           <TableRow className="w-[70%]">
-            <TableCell className="text-center">Slug</TableCell>
+            <TableCell className="text-center font-bold">Slug</TableCell>
             <TableCell>category</TableCell>
           </TableRow>
         </TableBody>

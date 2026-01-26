@@ -27,6 +27,12 @@ import SocialMediaCreate from "./pages/BackOffice/pages/Dashboard/pages/Dashboar
 import SocialMediaRead from "./pages/BackOffice/pages/Dashboard/pages/DashboardSocialMedia/pages/SocialMediaRead/SocialMediaRead.tsx";
 import SocialMediaUpdate from "./pages/BackOffice/pages/Dashboard/pages/DashboardSocialMedia/pages/SocialMediaUpdate/SocialMediaUpdate.tsx";
 import SocialMediaDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardSocialMedia/pages/SocialMediaDelete/SocialMediaDelete.tsx";
+import DashboardStatus from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/DashboardStatus.tsx";
+import StatusList from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusList/StatusList.tsx";
+import StatusCreate from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusCreate/StatusCreate.tsx";
+import StatusUpdate from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusUpdate/StatusUpdate.tsx";
+import StatusRead from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusRead/StatusRead.tsx";
+import StatusDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardStatus/pages/StatusDelete/StatusDelete.tsx";
 
 createRoot(document.getElementById("root") as Container).render(
   <StrictMode>
@@ -60,6 +66,13 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="read/:id" element={<SocialMediaRead />} />
                 <Route path="update/:id" element={<SocialMediaUpdate />} />
                 <Route path="delete/:id" element={<SocialMediaDelete />} />
+              </Route>
+              <Route path="status" element={<DashboardStatus />}>
+                <Route path="list" element={<StatusList />} />
+                <Route path="create" element={<StatusCreate />} />
+                <Route path="read/:id" element={<StatusRead />} />
+                <Route path="update/:id" element={<StatusUpdate />} />
+                <Route path="delete/:id" element={<StatusDelete />} />
               </Route>
             </Route>
           </Route>

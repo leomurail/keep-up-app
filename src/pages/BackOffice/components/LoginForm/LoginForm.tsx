@@ -1,8 +1,10 @@
 import { Button } from "@/components/shadcdn/ui/button";
+import { client, setClientToken } from "@/instance";
 import CustomField from "../InputField/InputField";
 import FormWrapper from "../FormWrapper/FormWrapper";
 import { useAuth } from "@/hooks/useAuth/useAuth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 import "./LoginForm.css";
 
@@ -18,12 +20,24 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
     },
   });
 
+  const navigate = useNavigate();
+
   const { login } = useAuth();
 
   async function handleLogin(data: { userName: string; password: string }) {
-    const { userName, password } = await data;
-    if (userName == "admin" && password == "admin") {
-      login(redirectTo);
+    const { userName, password } = data;
+    try {
+      const response = await client.auth.login({ email: userName, password });
+
+      setClientToken(response.token);
+      login();
+      navigate(redirectTo);
+
+    } catch (e) {
+      console.error("Login failed", e);
+      form.setError("root", {
+        message: e instanceof Error ? e.message : "Login failed"
+      });
     }
   }
 

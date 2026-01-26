@@ -4,16 +4,24 @@ import { Button } from "@/components/shadcdn/ui/button";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import type { Context } from "react";
 
+import "./CategoryForm.css";
+
 interface CategoryFormProps {
   form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
+  onSubmit?: (data: FieldValues) => void;
 }
 
-export default function CategoryForm({ form }: CategoryFormProps) {
-  const hookForm = useForm();
+export default function CategoryForm({ form, onSubmit }: CategoryFormProps) {
+  const hookForm = useForm<FieldValues>({
+    defaultValues: {
+      name: "",
+      slug: "",
+    },
+  });
   const formValue = form || hookForm;
 
   return (
-    <FormWrapper form={formValue} className="airdrop-form">
+    <FormWrapper form={formValue} className="category-form" onSubmit={onSubmit}>
       <InputField
         form={formValue}
         placeholder="Nom..."
@@ -26,7 +34,7 @@ export default function CategoryForm({ form }: CategoryFormProps) {
         label="Slug"
         name="slug"
       />
-      <Button type="submit">Créer</Button>
+      <Button type="submit">Sauvegarder</Button>
     </FormWrapper>
   );
 }

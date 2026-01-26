@@ -1,30 +1,33 @@
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router";
-import type { UniqId } from "./useAuth.d";
 
 export function useAuth() {
-  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth", "token"]);
   const navigate = useNavigate();
 
-  function login(redirectTo: string = "/back-office/dashboard"): UniqId {
-    const uniqId = crypto.randomUUID();
+  function login(redirectTo: string = "/back-office/dashboard"): string {
+    const uniqId = typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : Math.random().toString(36).substring(2) + Date.now().toString(36);
 
+    // Set auth marker with root path
     setCookie("auth", uniqId, {
-      path: "/back-office",
+      path: "/",
     });
+
     navigate(redirectTo);
-    //(todo) [ ] enregistrer en base de donnée via API
 
     return uniqId;
   }
 
   function logout() {
-    removeCookie("auth", { path: "/back-office" });
+    removeCookie("auth", { path: "/" });
+    removeCookie("token", { path: "/" });
     navigate("/back-office/login");
   }
 
   function checkLogin() {
-    if (!cookies.auth) {
+    if (!cookies.auth && !cookies.token) {
       navigate("/back-office/login");
     }
   }
