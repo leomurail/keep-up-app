@@ -10,3 +10,9 @@
 #key-stat-part h2 {
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  #key-stat-part {
+    padding: 60px 20px;
+  }
+}

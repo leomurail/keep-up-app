@@ -27,6 +27,26 @@
   font-size: var(--font-size-40);
   color: var(--color-text-secondary);
 }
+
 .key-stat-part .key-stat-text {
   font-size: var(--font-size-20);
+}
+
+@media (max-width: 768px) {
+  .key-stat {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Make the separator horizontal or hide it */
+  .key-stat-separateur {
+    width: 100px;
+    height: 5px;
+  }
+
+  .key-stat-part {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
 }

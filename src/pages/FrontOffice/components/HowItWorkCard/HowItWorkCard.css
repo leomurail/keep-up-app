@@ -24,3 +24,9 @@
   height: 70px;
   background: var(--color-dark-purple);
 }
+
+@media (max-width: 768px) {
+  .container-how-it-work .how-it-work-part-text {
+    font-size: 18px;
+  }
+}

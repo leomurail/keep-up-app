@@ -8,7 +8,10 @@
   cursor: pointer;
   color: var(--color-text-primary);
   border: none;
-  font-weight: var(--font-weight-label);
+}
+
+.btn span {
+  font-weight: var(--font-weight-label) !important;
 }
 
 .btn.primary {
@@ -34,4 +37,28 @@
 .btn-img {
   width: 24px;
   height: 24px;
+}
+
+
+@media(max-width: 768px) {
+
+  .btn span {
+    font-weight: var(--font-weight-label) !important;
+  }
+
+  .btn {
+    padding: var(--gap-small-xl) var(--gap-medium-sm);
+  }
+
+  .btn.l {
+    font-size: var(--font-size-16);
+  }
+
+  .btn.m {
+    font-size: var(--font-size-14);
+  }
+
+  .btn.s {
+    font-size: var(--font-size-12);
+  }
 }

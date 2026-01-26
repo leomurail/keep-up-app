@@ -6,10 +6,18 @@
   justify-content: center;
   gap: var(--gap-medium-l);
 }
+
 .how-it-works-step {
   display: flex;
   flex-direction: column;
   gap: var(--gap-medium-m);
   align-items: start;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  #how-it-works-part {
+    padding: 60px 20px;
+    height: auto;
+  }
 }

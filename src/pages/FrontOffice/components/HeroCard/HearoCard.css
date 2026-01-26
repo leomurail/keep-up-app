@@ -18,3 +18,14 @@
   width: 222px;
   text-align: center;
 }
+
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 10px;
+  }
+
+  .hero-card .hero-card-title {
+    font-size: var(--phone-font-size-label);
+  }
+}
