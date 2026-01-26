@@ -1,0 +1,16 @@
+.login-wrapper {
+    margin-inline: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px var(--color-neutral-600);
+    background-color: var(--color-neutral-900);
+    width: 100%;
+    max-width: 350px;
+    margin-inline: auto;
+    padding: calc(var(--spacing) * 5) calc(var(--spacing) * 3);
+    gap: calc(var(--spacing) * 5);
+    border-radius: var(--radius-md);
+}
