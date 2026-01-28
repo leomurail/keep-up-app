@@ -1,0 +1,266 @@
+.keep-up {
+  --color-white: #f1f1f1;
+  --color-light-grey: #808080;
+  --color-grey: #333333;
+  --color-dark-grey: #1a1a1a;
+  --color-black: #121212;
+  --color-beige: #fff4db;
+  --color-dark-purple: #4800d0;
+  --color-purple: #771cff;
+  --color-light-purple: #8747e6;
+  --color-dark-pink: #d625d9;
+  --color-pink: #e345e5;
+  --color-light-pink: #ff71ff;
+  --color-green: #00d057;
+  --color-red: #d6243c;
+
+  --size-2: 2px;
+  --size-3: 3px;
+  --size-4: 4px;
+  --size-5: 5px;
+  --size-7: 7px;
+  --size-10: 10px;
+  --size-12: 12px;
+  --size-15: 15px;
+  --size-20: 20px;
+  --size-25: 25px;
+  --size-30: 30px;
+  --size-40: 40px;
+  --size-50: 50px;
+  --size-60: 60px;
+  --size-70: 70px;
+  --size-80: 80px;
+  --size-100: 100px;
+  --size-120: 120px;
+  --size-150: 150px;
+  --size-200: 200px;
+
+  --weight-thin: 100;
+  --weight-very-light: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+  --weight-bold: 700;
+  --weight-very-bold: 800;
+  --weight-black: 900;
+
+  --font-size-8: 8px;
+  --font-size-10: 10px;
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-15: 15px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-22: 22px;
+  --font-size-24: 24px;
+  --font-size-28: 28px;
+  --font-size-32: 32px;
+  --font-size-36: 36px;
+  --font-size-40: 40px;
+  --font-size-48: 48px;
+  --font-size-56: 56px;
+  --font-size-64: 64px;
+  --font-size-72: 72px;
+  --font-size-96: 96px;
+  --font-size-128: 128px;
+
+  /*chart*/
+
+  /*color*/
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: var(--color-beige);
+  --color-text-variant: var(--color-pink);
+
+  --color-layer-0: var(--color-black);
+  --color-layer-1: var(--color-dark-grey);
+  --color-layer-2: var(--color-grey);
+  --color-layer-3: var(--color-light-grey);
+
+  --color-primary: var(--color-purple);
+  --color-secondary: var(--color-dark-purple);
+  --color-tertiary: var(--color-pink);
+
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
+
+  /*size*/
+  --gap-small-xs: var(--size-2);
+  --gap-small-sm: var(--size-3);
+  --gap-small-m: var(--size-5);
+  --gap-small-l: var(--size-7);
+  --gap-small-xl: var(--size-10);
+
+  --gap-medium-xs: var(--size-15);
+  --gap-medium-sm: var(--size-20);
+  --gap-medium-m: var(--size-30);
+  --gap-medium-l: var(--size-40);
+
+  --gap-large-xs: var(--size-50);
+  --gap-large-s: var(--size-60);
+  --gap-large-m: var(--size-80);
+  --gap-large-l: var(--size-100);
+  --gap-large-xl: var(--size-150);
+  --gap-large-2xl: var(--size-200);
+
+  /*font size phone*/
+  --phone-font-size-h1: var(--font-size-22);
+  --phone-font-size-h2: var(--font-size-20);
+  --phone-font-size-h3: var(--font-size-18);
+  --phone-font-size-h4: var(--font-size-16);
+  --phone-font-size-h5: var(--font-size-15);
+  --phone-font-size-h6: var(--font-size-15);
+
+  --phone-font-size-text: var(--font-size-14);
+  --phone-font-size-label: var(--font-size-15);
+  --phone-font-size-link: var(--font-size-14);
+
+  --phone-font-size-s: var(--font-size-8);
+  --phone-font-size-m: var(--font-size-10);
+  --phone-font-size-l: var(--font-size-12);
+
+  /*font size desktop*/
+  --desktop-font-size-h1: var(--font-size-48);
+  --desktop-font-size-h2: var(--font-size-36);
+  --desktop-font-size-h3: var(--font-size-36);
+  --desktop-font-size-h4: var(--font-size-32);
+  --desktop-font-size-h5: var(--font-size-24);
+  --desktop-font-size-h6: var(--font-size-20);
+
+  --desktop-font-size-text: var(--font-size-16);
+  --desktop-font-size-label: var(--font-size-18);
+  --desktop-font-size-link: var(--font-size-16);
+
+  --desktop-font-size-s: var(--font-size-10);
+  --desktop-font-size-m: var(--font-size-12);
+  --desktop-font-size-l: var(--font-size-14);
+
+  /*font weight*/
+  --font-weight-h1: var(--weight-bold);
+  --font-weight-h2: var(--weight-bold);
+  --font-weight-h3: var(--weight-bold);
+  --font-weight-h4: var(--weight-bold);
+  --font-weight-h5: var(--weight-bold);
+  --font-weight-h6: var(--weight-bold);
+
+  --font-weight-text: var(--weight-regular);
+  --font-weight-label: var(--weight-semi-bold);
+  --font-weight-link: var(--weight-semi-bold);
+
+  --font-weight-s: var(--weight-medium);
+  --font-weight-m: var(--weight-medium);
+  --font-weight-l: var(--weight-medium);
+}
+
+.keep-up h1 {
+  font-size: var(--desktop-font-size-h1);
+  font-weight: var(--font-weight-h1);
+  color: var(--color-text-primary);
+}
+
+.keep-up h2 {
+  font-size: var(--desktop-font-size-h2);
+  font-weight: var(--font-weight-h2);
+  color: var(--color-text-primary);
+}
+
+.keep-up h3 {
+  font-size: var(--desktop-font-size-h3);
+  font-weight: var(--font-weight-h3);
+  color: var(--color-text-primary);
+}
+
+.keep-up h4 {
+  font-size: var(--desktop-font-size-h4);
+  font-weight: var(--font-weight-h4);
+  color: var(--color-text-primary);
+}
+
+.keep-up h5 {
+  font-size: var(--desktop-font-size-h5);
+  font-weight: var(--font-weight-h5);
+  color: var(--color-text-primary);
+}
+
+.keep-up h6 {
+  font-size: var(--desktop-font-size-h6);
+  font-weight: var(--font-weight-h6);
+  color: var(--color-text-primary);
+}
+
+.keep-up p,
+.keep-up span {
+  font-size: var(--desktop-font-size-text);
+  font-weight: var(--font-weight-text);
+  color: var(--color-text-primary);
+}
+
+.keep-up label {
+  font-size: var(--desktop-font-size-label);
+  font-weight: var(--font-weight-label);
+  color: var(--color-text-primary);
+}
+
+.keep-up a {
+  font-size: var(--desktop-font-size-link);
+  font-weight: var(--font-weight-link);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+  .keep-up h1 {
+    font-size: var(--phone-font-size-h1);
+    font-weight: var(--font-weight-h1);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up h2 {
+    font-size: var(--phone-font-size-h2);
+    font-weight: var(--font-weight-h2);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up h3 {
+    font-size: var(--phone-font-size-h3);
+    font-weight: var(--font-weight-h3);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up h4 {
+    font-size: var(--phone-font-size-h4);
+    font-weight: var(--font-weight-h4);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up h5 {
+    font-size: var(--phone-font-size-h5);
+    font-weight: var(--font-weight-h5);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up h6 {
+    font-size: var(--phone-font-size-h6);
+    font-weight: var(--font-weight-h6);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up p,
+  .keep-up span {
+    font-size: var(--phone-font-size-text);
+    font-weight: var(--font-weight-text);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up label {
+    font-size: var(--phone-font-size-label);
+    font-weight: var(--font-weight-label);
+    color: var(--color-text-primary);
+  }
+
+  .keep-up a {
+    font-size: var(--phone-font-size-link);
+    font-weight: var(--font-weight-link);
+    color: var(--color-text-primary);
+  }
+}

@@ -1,5 +1,5 @@
 import { BaseHttpClient } from '../../../BaseHttpClient/BaseHttpClient';
-import type { Status } from '../../Ressources/types';
+import type { Status } from '../types';
 
 export class StatusResource extends BaseHttpClient {
     async list(): Promise<Status[]> {
