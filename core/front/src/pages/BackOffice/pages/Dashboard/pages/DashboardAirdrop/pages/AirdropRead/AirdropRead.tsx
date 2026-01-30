@@ -7,9 +7,9 @@ import {
   Table,
 } from "@/components/shadcdn/ui/table";
 import { Button } from "@/components/shadcdn/ui/button";
-import { client } from "@/instance";
 import type { AirdropEvent } from "@/clients/KeepUpClient/Ressources/types";
 import { getConfig } from "@/utils";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function AirdropRead() {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +22,7 @@ export default function AirdropRead() {
 
     const fetchAirdrop = async () => {
       try {
-        const data = await client.airdropEvents.get(id);
+        const data = await keepUpClient.airdropEvent.get(id);
         setAirdrop(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch airdrop");
@@ -58,7 +58,7 @@ export default function AirdropRead() {
             <TableCell className="w-[70%]">
               {airdrop.image ? (
                 <img
-                  src={getConfig("VITE_API_URL") + "/api/images/" + airdrop.image.src}
+                  src={getConfig("VITE_API_URL") + "/api/image/content/" + airdrop.image.src}
                   width={120}
                   height={120}
                   alt={airdrop.image.alt || "Airdrop logo"}
@@ -105,7 +105,7 @@ export default function AirdropRead() {
                     <div key={sm.id} className="flex flex-col items-center">
                       {sm.socialMedia?.image ? (
                         <img
-                          src={getConfig("VITE_API_URL") + "/api/images/" + sm.socialMedia.image.src}
+                          src={getConfig("VITE_API_URL") + "/api/image/content/" + sm.socialMedia.image.src}
                           width={25}
                           height={25}
                           alt={sm.socialMedia.label}

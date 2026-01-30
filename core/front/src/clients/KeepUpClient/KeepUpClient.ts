@@ -6,34 +6,41 @@ import { SystemResource } from './Ressources/SystemResource/SystemResource';
 import { UserResource } from './Ressources/UserResource/UserResource';
 import { ImageResource } from './Ressources/ImageResource/ImageResource';
 import { StatusResource } from './Ressources/StatusResource/StatusResource';
+import { getConfig } from '@/utils';
+import { BaseHttpClient } from '../BaseHttpClient/BaseHttpClient';
+import { ApiKeyResource } from './Ressources/ApiKeyRessource/ApiKeyRessource';
+import { BaseHttpClientBff } from '../BaseHttpClientBff/BaseHttpClientBff';
 
 export class KeepUpClient {
-    public readonly system: SystemResource;
-    public readonly auth: AuthResource;
-    public readonly users: UserResource;
-    public readonly categories: CategoryResource;
-    public readonly airdropEvents: AirdropEventResource;
-    public readonly socialMedia: SocialMediaResource;
-    public readonly images: ImageResource;
-    public readonly status: StatusResource;
+    readonly baseHttpClient: BaseHttpClient | BaseHttpClientBff;
 
-    private token: string | null = null;
+    readonly system: SystemResource;
+    readonly auth: AuthResource;
+    readonly user: UserResource;
+    readonly category: CategoryResource;
+    readonly airdropEvent: AirdropEventResource;
+    readonly socialMedia: SocialMediaResource;
+    readonly image: ImageResource;
+    readonly status: StatusResource;
+    readonly apiKey: ApiKeyResource;
 
-    constructor(baseUrl: string) {
-        // We bind the getToken function to this instance so resources can access the current token
-        const getToken = () => this.token;
+    constructor(type: "BFF" | "API") {
+        this.baseHttpClient = this.getBaseHttpClient(type);
 
-        this.system = new SystemResource(baseUrl, getToken);
-        this.auth = new AuthResource(baseUrl, getToken);
-        this.users = new UserResource(baseUrl, getToken);
-        this.categories = new CategoryResource(baseUrl, getToken);
-        this.airdropEvents = new AirdropEventResource(baseUrl, getToken);
-        this.socialMedia = new SocialMediaResource(baseUrl, getToken);
-        this.images = new ImageResource(baseUrl, getToken);
-        this.status = new StatusResource(baseUrl, getToken);
+        this.system = new SystemResource(this.baseHttpClient);
+        this.auth = new AuthResource(this.baseHttpClient);
+        this.user = new UserResource(this.baseHttpClient);
+        this.category = new CategoryResource(this.baseHttpClient);
+        this.airdropEvent = new AirdropEventResource(this.baseHttpClient);
+        this.socialMedia = new SocialMediaResource(this.baseHttpClient);
+        this.image = new ImageResource(this.baseHttpClient);
+        this.status = new StatusResource(this.baseHttpClient);
+        this.apiKey = new ApiKeyResource(this.baseHttpClient);
     }
 
-    setToken(token: string | null) {
-        this.token = token;
+    getBaseHttpClient(type: "BFF" | "API") {
+        return type === "BFF"
+            ? new BaseHttpClientBff(getConfig("VITE_BFF_URL"))
+            : new BaseHttpClient(getConfig("VITE_API_URL"));
     }
 }

@@ -2,7 +2,7 @@ import { useForm, type FieldValues } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import CategoryForm from "../../components/CategoryForm/CategoryForm";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function CategoryUpdate() {
   const { id } = useParams<{ id: string }>();
@@ -18,7 +18,7 @@ export default function CategoryUpdate() {
     if (!id) return;
     const fetchCategory = async () => {
       try {
-        const category = await client.categories.get(id);
+        const category = await keepUpClient.category.get(id);
         form.reset({
           name: category.label,
           slug: category.slug,
@@ -33,7 +33,7 @@ export default function CategoryUpdate() {
   const handleSubmit = async (data: FieldValues) => {
     if (!id) return;
     try {
-      await client.categories.update(id, {
+      await keepUpClient.category.update(id, {
         label: data.name,
         slug: data.slug,
       });

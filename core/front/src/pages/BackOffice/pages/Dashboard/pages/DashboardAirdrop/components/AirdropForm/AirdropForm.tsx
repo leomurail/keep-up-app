@@ -7,7 +7,7 @@ import FormWrapper from "@/pages/BackOffice/components/FormWrapper/FormWrapper";
 import { useForm, type FieldValues, type UseFormReturn } from "react-hook-form";
 import SocialMediaInputCollection from "../SocialMediaInputCollection/SocialMediaInputCollection";
 import type { Context } from "react";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 interface AirdropFormProps {
   form?: UseFormReturn<FieldValues, Context<FieldValues>, FieldValues>;
@@ -32,21 +32,21 @@ export default function AirdropForm({ form, onSubmit }: AirdropFormProps) {
   const [socialOptions, setSocialOptions] = useState<{ value: string, label: string }[]>([]);
 
   useEffect(() => {
-    client.categories.list().then(cats => {
+    keepUpClient.category.list().then(cats => {
       setCategories(cats.map(c => ({
         value: c.id.toString(),
         label: c.label
       })));
     }).catch(console.error);
 
-    client.status.list().then(statuses => {
+    keepUpClient.status.list().then(statuses => {
       setStatusOptions(statuses.map(s => ({
         value: s.id.toString(),
         label: s.label
       })));
     }).catch(console.error);
 
-    client.socialMedia.list().then(medias => {
+    keepUpClient.socialMedia.list().then(medias => {
       setSocialOptions(medias.map(m => ({
         value: m.id.toString(),
         label: m.label

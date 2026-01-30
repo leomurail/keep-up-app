@@ -1,63 +1,60 @@
-export class BaseHttpClient {
-    protected baseUrl: string;
-    protected getToken: () => string | null;
+import { AbstractHttpClient } from "@/abstracts";
+import { Cookies } from "react-cookie";
 
-    constructor(
-        baseUrl: string,
-        getToken: () => string | null
-    ) {
+export class BaseHttpClient extends AbstractHttpClient {
+    protected baseUrl: string;
+    protected cookies: Cookies;
+
+    constructor(baseUrl: string) {
+        super();
+
         this.baseUrl = baseUrl;
-        this.getToken = getToken;
+        this.cookies = new Cookies();
     }
 
-    protected async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-        const token = this.getToken();
-        const headers: Record<string, string> = {
-            'Accept': 'application/json',
-        };
+    setToken(token: string | null): void {
+        this.cookies.set('token', token, { path: '/' });
+    }
 
-        if (!(options.body instanceof FormData)) {
-            headers['Content-Type'] = 'application/json';
+    getToken(): string | undefined {
+        return this.cookies.get('token');
+    }
+
+    clearToken(): void {
+        this.cookies.remove('token', { path: '/' });
+    }
+
+    public async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+        if (this.baseUrl === "") {
+            throw new Error("Base URL is not set");
         }
 
-        if (options.headers) {
-            Object.assign(headers, options.headers);
+        const url = `${this.baseUrl}${endpoint}`;
+        const config = this.getConfig(options);
+
+        return this.call<T>(url, config);
+    }
+
+    private getConfig(options: RequestInit): RequestInit {
+        const token = this.getToken();
+
+        const headers = new Headers({
+            'Accept': 'application/json',
+            ...(options.headers as Record<string, string>)
+        });
+
+        if (!headers.has('Content-Type') && !(options.body instanceof FormData)) {
+            headers.set('Content-Type', 'application/json');
         }
 
         if (options.body instanceof FormData) {
-            delete headers['Content-Type'];
+            headers.delete('Content-Type');
         }
 
         if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
+            headers.set('Authorization', `Bearer ${token}`);
         }
 
-        const config: RequestInit = {
-            ...options,
-            headers,
-        };
-
-        const response = await fetch(`${this.baseUrl}${endpoint}`, config);
-
-        if (!response.ok) {
-            // Try to parse error message from JSON if available
-            let errorMessage = `HTTP Error: ${response.status} ${response.statusText}`;
-            try {
-                const errorData = await response.json();
-                if (errorData && typeof errorData === 'object' && 'message' in errorData) {
-                    errorMessage = errorData.message;
-                }
-            } catch (e) {
-                // Ignore JSON parse error and use default message
-            }
-            throw new Error(errorMessage);
-        }
-
-        // Handle 204 No Content
-        if (response.status === 204) {
-            return {} as T;
-        }
-
-        return response.json();
+        return { ...options, headers };
     }
 }

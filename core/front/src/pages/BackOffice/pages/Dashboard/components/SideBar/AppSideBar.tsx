@@ -50,8 +50,13 @@ export default function AppSidebar() {
       icon: Inbox,
     },
     {
-      title: "Users",
-      url: "/back-office/dashboard/users/list",
+      title: "User",
+      url: "/back-office/dashboard/user/list",
+      icon: Inbox,
+    },
+    {
+      title: "Api Key",
+      url: "/back-office/dashboard/api-key/list",
       icon: Inbox,
     },
   ];

@@ -16,9 +16,10 @@ services:
       - /app/dist
     environment:
       - NODE_ENV=${NODE_ENV}
-      - VITE_API_URL=${VITE_API_URL}
       - VITE_APP_PORT=${VITE_APP_PORT}
       - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
+      - VITE_BFF_URL=${VITE_BFF_URL}
+      - VITE_API_URL=${VITE_API_URL}
     networks:
       - traefik-net
     labels:
@@ -32,6 +33,7 @@ services:
     container_name: ${APP_NAME}-bff.${NODE_ENV}
     image: ${APP_NAME}-bff.${NODE_ENV}:latest
     build:
+      target: ${NODE_ENV}
       context: .
       dockerfile: docker/Dockerfile.bff
     volumes:
@@ -40,14 +42,16 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - BFF_PORT=${BFF_PORT}
-      - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
+      - APP_URL=${APP_URL}
       - VITE_API_URL=${VITE_API_URL}
       - API_TOKEN=${API_TOKEN}
+    extra_hosts:
+      - "${API_DOMAIN}:host-gateway"
     networks:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${APP_NAME}-bff.rule=Host(`api.${VITE_APP_DOMAIN}`)"
+      - "traefik.http.routers.${APP_NAME}-bff.rule=Host(`${BFF_DOMAIN}`)"
       - "traefik.http.routers.${APP_NAME}-bff.entrypoints=websecure"
       - "traefik.http.routers.${APP_NAME}-bff.tls=true"
       - "traefik.http.routers.${APP_NAME}-bff.tls.certresolver=myresolver"

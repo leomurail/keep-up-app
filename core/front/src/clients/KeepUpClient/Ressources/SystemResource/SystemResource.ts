@@ -1,8 +1,11 @@
 import type { HealthResponse } from '../types';
-import { BaseHttpClient } from '../../../BaseHttpClient/BaseHttpClient';
+import type { BaseHttpClient } from '@/clients/BaseHttpClient/BaseHttpClient';
+import type { BaseHttpClientBff } from '@/clients/BaseHttpClientBff/BaseHttpClientBff';
 
-export class SystemResource extends BaseHttpClient {
+export class SystemResource {
+    constructor(private readonly baseHttpClient: BaseHttpClient | BaseHttpClientBff) { }
+
     async getHealth(): Promise<HealthResponse> {
-        return this.request<HealthResponse>('/api/health');
+        return this.baseHttpClient.request<HealthResponse>('/api/health');
     }
 }

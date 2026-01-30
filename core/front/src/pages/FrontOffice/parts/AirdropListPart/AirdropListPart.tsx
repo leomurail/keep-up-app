@@ -3,8 +3,9 @@ import "./AirdropListPart.css";
 import Button from "../../components/Button/Button";
 import CardAirdrop from "../../components/CardAirdrop/CardAirdrop";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { client } from "@/instance";
 import type { AirdropEvent } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClientBff } from "../../instances";
+import { getConfig } from "@/utils";
 
 export default function AirdropListPart() {
   const [airdrops, setAirdrops] = useState<AirdropEvent[]>([]);
@@ -14,7 +15,7 @@ export default function AirdropListPart() {
   useEffect(() => {
     const fetchAirdrops = async () => {
       try {
-        const data = await client.airdropEvents.list();
+        const data = await keepUpClientBff.airdropEvent.list();
         setAirdrops(data);
       } catch (err) {
         setError("Failed to fetch airdrops");
@@ -41,15 +42,17 @@ export default function AirdropListPart() {
           ) : error ? (
             <p>Erreur: {error}</p>
           ) : (
-            airdrops.map((airdrop) => (
+            airdrops ? airdrops.map((airdrop) => (
               <CardAirdrop
                 key={airdrop.id}
-                imgSrc={airdrop.image?.src || "/img/webp/airdrop_project.webp"}
+                imgSrc={getConfig("VITE_API_URL") + "/api/image/content/" + airdrop.image?.src || "/img/webp/airdrop_project.webp"}
                 statu={airdrop.status?.label || "Inconnu"}
                 title={airdrop.title}
                 text={airdrop.category?.label || "Non classé"}
               />
-            ))
+            )) : (
+              <p>Aucun airdrop trouvé</p>
+            )
           )}
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useForm, type FieldValues } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import AirdropForm from "../../components/AirdropForm/AirdropForm";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function AirdropUpdate() {
   const { id } = useParams<{ id: string }>();
@@ -23,7 +23,7 @@ export default function AirdropUpdate() {
     if (!id) return;
     const fetchAirdrop = async () => {
       try {
-        const airdrop = await client.airdropEvents.get(id);
+        const airdrop = await keepUpClient.airdropEvent.get(id);
         form.reset({
           name: airdrop.title,
           description: airdrop.text,
@@ -48,7 +48,7 @@ export default function AirdropUpdate() {
       let imageId: number | undefined;
 
       if (data.image && data.image.length > 0 && data.image[0] instanceof File) {
-        const uploadedImage = await client.images.upload(data.image[0]);
+        const uploadedImage = await keepUpClient.image.upload(data.image[0]);
         imageId = uploadedImage.id;
       }
 
@@ -64,7 +64,7 @@ export default function AirdropUpdate() {
         }).filter(Boolean)
       };
 
-      await client.airdropEvents.update(id, payload);
+      await keepUpClient.airdropEvent.update(id, payload);
       navigate("/back-office/dashboard/airdrop/list");
     } catch (e) {
       console.error("Failed to update airdrop", e);

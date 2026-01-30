@@ -2,7 +2,7 @@ import { useForm, type FieldValues } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import SocialMediaForm from "../../components/SocialMediaForm/SocialMediaForm";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function SocialMediaUpdate() {
   const { id } = useParams<{ id: string }>();
@@ -19,7 +19,7 @@ export default function SocialMediaUpdate() {
     if (!id) return;
     const fetchSocialMedia = async () => {
       try {
-        const data = await client.socialMedia.get(id);
+        const data = await keepUpClient.socialMedia.get(id);
         form.reset({
           name: data.label,
           slug: data.slug,
@@ -38,11 +38,11 @@ export default function SocialMediaUpdate() {
       let imageId: number | undefined;
 
       if (data.image && data.image.length > 0 && data.image[0] instanceof File) {
-        const uploadedImage = await client.images.upload(data.image[0]);
+        const uploadedImage = await keepUpClient.image.upload(data.image[0]);
         imageId = uploadedImage.id;
       }
 
-      await client.socialMedia.update(id, {
+      await keepUpClient.socialMedia.update(id, {
         label: data.name,
         slug: data.slug,
         ...(imageId && { imageId }),

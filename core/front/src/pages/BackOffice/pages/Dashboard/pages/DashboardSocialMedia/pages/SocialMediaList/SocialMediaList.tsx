@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
-import { client } from "@/instance";
 import type { SocialMedia } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function SocialMediaList() {
   const [socialMedias, setSocialMedias] = useState<SocialMedia[]>([]);
@@ -11,7 +11,7 @@ export default function SocialMediaList() {
   useEffect(() => {
     const fetchSocialMedias = async () => {
       try {
-        const data = await client.socialMedia.list();
+        const data = await keepUpClient.socialMedia.list();
         setSocialMedias(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch social media");
@@ -33,7 +33,7 @@ export default function SocialMediaList() {
         <DashboardCard
           key={social.id}
           id={social.id}
-          title={social.label}
+          label={social.label}
           name="social-media"
         />
       ))}

@@ -6,9 +6,9 @@ import {
   TableCell,
   TableRow,
 } from "@/components/shadcdn/ui/table";
-import { client } from "@/instance";
 import type { SocialMedia } from "@/clients/KeepUpClient/Ressources/types";
 import { getConfig } from "@/utils";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function SocialMediaRead() {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +21,7 @@ export default function SocialMediaRead() {
 
     const fetchSocialMedia = async () => {
       try {
-        const data = await client.socialMedia.get(id);
+        const data = await keepUpClient.socialMedia.get(id);
         setSocialMedia(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch social media");
@@ -55,7 +55,7 @@ export default function SocialMediaRead() {
             <TableCell>
               {socialMedia.image ? (
                 <img
-                  src={getConfig("VITE_API_URL") + "/api/images/" + socialMedia.image.src}
+                  src={getConfig("VITE_API_URL") + "/api/image/content/" + socialMedia.image.src}
                   alt={socialMedia.image.alt || socialMedia.label}
                   width={150}
                   height={150}

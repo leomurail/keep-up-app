@@ -40,6 +40,10 @@ import UserCreate from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/p
 import UserRead from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserRead/UserRead.tsx";
 import UserUpdate from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserUpdate/UserUpdate.tsx";
 import UserDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardUser/pages/UserDelete/UserDelete.tsx";
+import ApiKeyCreate from "./pages/BackOffice/pages/Dashboard/pages/DashboardApiKey/pages/ApiKeyCreate/ApiKeyCreate.tsx";
+import ApiKeyList from "./pages/BackOffice/pages/Dashboard/pages/DashboardApiKey/pages/ApiKeyList/ApiKeyList.tsx";
+import DashboardApiKey from "./pages/BackOffice/pages/Dashboard/pages/DashboardApiKey/DashboardApiKey.tsx";
+import ApiKeyDelete from "./pages/BackOffice/pages/Dashboard/pages/DashboardApiKey/pages/ApiKeyDelete/ApiKey.tsx";
 
 createRoot(document.getElementById("root") as Container).render(
   <StrictMode>
@@ -53,6 +57,7 @@ createRoot(document.getElementById("root") as Container).render(
 
             <Route path="dashboard" element={<Dashboard />}>
               <Route path="home" element={<DashboardHome />} />
+
               <Route path="airdrop" element={<DashboardAirdrop />}>
                 <Route path="list" element={<AirdropList />} />
                 <Route path="create" element={<AirdropCreate />} />
@@ -60,6 +65,7 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="update/:id" element={<AirdropUpdate />} />
                 <Route path="delete/:id" element={<AirdropDelete />} />
               </Route>
+
               <Route path="category" element={<DashboardCategory />}>
                 <Route path="list" element={<CategoryList />} />
                 <Route path="create" element={<CategoryCreate />} />
@@ -67,6 +73,7 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="update/:id" element={<CategoryUpdate />} />
                 <Route path="delete/:id" element={<CategoryDelete />} />
               </Route>
+
               <Route path="social-media" element={<DashboardSocialMedia />}>
                 <Route path="list" element={<SocialMediaList />} />
                 <Route path="create" element={<SocialMediaCreate />} />
@@ -74,6 +81,7 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="update/:id" element={<SocialMediaUpdate />} />
                 <Route path="delete/:id" element={<SocialMediaDelete />} />
               </Route>
+
               <Route path="status" element={<DashboardStatus />}>
                 <Route path="list" element={<StatusList />} />
                 <Route path="create" element={<StatusCreate />} />
@@ -81,12 +89,19 @@ createRoot(document.getElementById("root") as Container).render(
                 <Route path="update/:id" element={<StatusUpdate />} />
                 <Route path="delete/:id" element={<StatusDelete />} />
               </Route>
-              <Route path="users" element={<DashboardUser />}>
+
+              <Route path="user" element={<DashboardUser />}>
                 <Route path="list" element={<UserList />} />
                 <Route path="create" element={<UserCreate />} />
                 <Route path="read/:id" element={<UserRead />} />
                 <Route path="update/:id" element={<UserUpdate />} />
                 <Route path="delete/:id" element={<UserDelete />} />
+              </Route>
+
+              <Route path="api-key" element={<DashboardApiKey />}>
+                <Route path="list" element={<ApiKeyList />} />
+                <Route path="create" element={<ApiKeyCreate />} />
+                <Route path="delete/:id" element={<ApiKeyDelete />} />
               </Route>
             </Route>
           </Route>

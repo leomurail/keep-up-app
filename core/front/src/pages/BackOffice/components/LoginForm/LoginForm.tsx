@@ -1,5 +1,5 @@
 import { Button } from "@/components/shadcdn/ui/button";
-import { client, setClientToken } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 import CustomField from "../InputField/InputField";
 import FormWrapper from "../FormWrapper/FormWrapper";
 import { useAuth } from "@/hooks/useAuth/useAuth";
@@ -27,9 +27,9 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
   async function handleLogin(data: { userName: string; password: string }) {
     const { userName, password } = data;
     try {
-      const response = await client.auth.login({ email: userName, password });
+      const response = await keepUpClient.auth.login({ email: userName, password });
 
-      setClientToken(response.token);
+      keepUpClient.baseHttpClient.setToken(response.token);
       login();
       navigate(redirectTo);
 

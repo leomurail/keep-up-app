@@ -2,7 +2,7 @@ import { useForm, type FieldValues } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import UserForm from "../../components/UserForm/UserForm";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function UserUpdate() {
     const { id } = useParams<{ id: string }>();
@@ -20,7 +20,7 @@ export default function UserUpdate() {
         if (!id) return;
         const fetchUser = async () => {
             try {
-                const data = await client.users.get(id);
+                const data = await keepUpClient.user.get(id);
                 form.reset({
                     email: data.email,
                     roles: data.roles,
@@ -35,11 +35,11 @@ export default function UserUpdate() {
     const handleSubmit = async (data: any) => {
         if (!id) return;
         try {
-            await client.users.update(id, {
+            await keepUpClient.user.update(id, {
                 email: data.email,
                 roles: data.roles
             });
-            navigate("/back-office/dashboard/users/list");
+            navigate("/back-office/dashboard/user/list");
         } catch (e) {
             console.error("Failed to update user", e);
         }

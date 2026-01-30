@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
-import { client } from "@/instance";
 import type { Category } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -11,7 +11,7 @@ export default function CategoryList() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await client.categories.list();
+        const data = await keepUpClient.category.list();
         setCategories(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch categories");
@@ -33,7 +33,7 @@ export default function CategoryList() {
         <DashboardCard
           key={category.id}
           id={category.id}
-          title={category.label}
+          label={category.label}
           name="category"
         />
       ))}

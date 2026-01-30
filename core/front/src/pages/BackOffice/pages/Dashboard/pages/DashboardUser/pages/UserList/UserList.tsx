@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
-import { client } from "@/instance";
 import type { User } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function UserList() {
     const [users, setUsers] = useState<User[]>([]);
@@ -11,7 +11,7 @@ export default function UserList() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const data = await client.users.list();
+                const data = await keepUpClient.user.list();
                 setUsers(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Failed to fetch users");
@@ -33,8 +33,8 @@ export default function UserList() {
                 <DashboardCard
                     key={user.id}
                     id={user.id}
-                    title={user.email}
-                    name="users"
+                    label={user.email}
+                    name="user"
                 />
             ))}
         </section>

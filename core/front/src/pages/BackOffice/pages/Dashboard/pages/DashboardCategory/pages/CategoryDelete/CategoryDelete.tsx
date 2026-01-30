@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
-import { client } from "@/instance";
 import { Button } from "@/components/shadcdn/ui/button";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function CategoryDelete() {
   const { id } = useParams<{ id: string }>();
@@ -9,7 +9,7 @@ export default function CategoryDelete() {
   const handleDelete = async () => {
     if (!id) return;
     try {
-      await client.categories.delete(id);
+      await keepUpClient.category.delete(id);
       navigate("/back-office/dashboard/category/list");
     } catch (e) {
       console.error("Failed to delete category", e);

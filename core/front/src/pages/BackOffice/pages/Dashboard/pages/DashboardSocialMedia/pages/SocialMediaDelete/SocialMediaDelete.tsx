@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 import { Button } from "@/components/shadcdn/ui/button";
 
 export default function SocialMediaDelete() {
@@ -9,7 +9,7 @@ export default function SocialMediaDelete() {
   const handleDelete = async () => {
     if (!id) return;
     try {
-      await client.socialMedia.delete(id);
+      await keepUpClient.socialMedia.delete(id);
       navigate("/back-office/dashboard/social-media/list");
     } catch (e) {
       console.error("Failed to delete social media", e);

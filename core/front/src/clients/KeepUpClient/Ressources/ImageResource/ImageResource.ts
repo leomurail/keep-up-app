@@ -1,9 +1,12 @@
+import type { BaseHttpClientBff } from '@/clients/BaseHttpClientBff/BaseHttpClientBff';
+import type { BaseHttpClient } from '@/clients/BaseHttpClient/BaseHttpClient';
 import type { Image } from '../types';
-import { BaseHttpClient } from '../../../BaseHttpClient/BaseHttpClient';
 
-export class ImageResource extends BaseHttpClient {
+export class ImageResource {
+    constructor(private readonly baseHttpClient: BaseHttpClient | BaseHttpClientBff) { }
+
     async list(): Promise<Image[]> {
-        return this.request<Image[]>('/api/images');
+        return this.baseHttpClient.request<Image[]>('/api/image');
     }
 
     async upload(file: File, alt?: string): Promise<Image> {
@@ -13,7 +16,7 @@ export class ImageResource extends BaseHttpClient {
             formData.append('alt', alt);
         }
 
-        return this.request<Image>('/api/images', {
+        return this.baseHttpClient.request<Image>('/api/image', {
             method: 'POST',
             body: formData,
         });
@@ -24,7 +27,7 @@ export class ImageResource extends BaseHttpClient {
     }
 
     async get(id: string | number): Promise<Image> {
-        return this.request<Image>(`/api/images/${id}`);
+        return this.baseHttpClient.request<Image>(`/api/image/${id}`);
     }
 
     async update(id: string | number, data: { file?: File; alt?: string }): Promise<Image> {
@@ -36,14 +39,14 @@ export class ImageResource extends BaseHttpClient {
             formData.append('alt', data.alt);
         }
 
-        return this.request<Image>(`/api/images/${id}`, {
+        return this.baseHttpClient.request<Image>(`/api/image/${id}`, {
             method: 'POST',
             body: formData,
         });
     }
 
     async delete(id: string | number): Promise<void> {
-        return this.request<void>(`/api/images/${id}`, {
+        return this.baseHttpClient.request<void>(`/api/image/${id}`, {
             method: 'DELETE',
         });
     }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
-import { client } from "@/instance";
 import type { AirdropEvent } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function AirdropList() {
   const [airdrops, setAirdrops] = useState<AirdropEvent[]>([]);
@@ -11,7 +11,7 @@ export default function AirdropList() {
   useEffect(() => {
     const fetchAirdrops = async () => {
       try {
-        const data = await client.airdropEvents.list();
+        const data = await keepUpClient.airdropEvent.list();
         setAirdrops(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch airdrops");
@@ -33,7 +33,7 @@ export default function AirdropList() {
         <DashboardCard
           key={airdrop.id}
           id={airdrop.id}
-          title={airdrop.title}
+          label={airdrop.title}
           name="airdrop"
         />
       ))}

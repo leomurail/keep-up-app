@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:24-alpine AS base
 
 WORKDIR /app
 
@@ -9,4 +9,8 @@ EXPOSE ${BFF_PORT}
 
 USER node
 
-CMD ["node", "index.js"]
+FROM base AS development
+CMD ["npm", "run", "dev"]
+
+FROM base AS production
+CMD ["npm", "run", "start"]

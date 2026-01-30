@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import AirdropForm from "../../components/AirdropForm/AirdropForm";
-import { client } from "@/instance";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function AirdropCreate() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function AirdropCreate() {
 
       if (data.image && data.image.length > 0 && data.image[0] instanceof File) {
         const file = data.image[0];
-        const uploadedImage = await client.images.upload(file);
+        const uploadedImage = await keepUpClient.image.upload(file);
         imageId = uploadedImage.id;
       }
 
@@ -27,7 +27,7 @@ export default function AirdropCreate() {
         }).filter(Boolean)
       };
 
-      await client.airdropEvents.create(payload);
+      await keepUpClient.airdropEvent.create(payload);
       navigate("/back-office/dashboard/airdrop/list");
     } catch (e) {
       console.error("Failed to create airdrop", e);

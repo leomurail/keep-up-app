@@ -1,31 +1,34 @@
-import { BaseHttpClient } from '../../../BaseHttpClient/BaseHttpClient';
 import type { Status } from '../types';
+import type { BaseHttpClient } from '@/clients/BaseHttpClient/BaseHttpClient';
+import type { BaseHttpClientBff } from '@/clients/BaseHttpClientBff/BaseHttpClientBff';
 
-export class StatusResource extends BaseHttpClient {
+export class StatusResource {
+    constructor(private readonly baseHttpClient: BaseHttpClient | BaseHttpClientBff) { }
+
     async list(): Promise<Status[]> {
-        return this.request<Status[]>('/api/status');
+        return this.baseHttpClient.request<Status[]>('/api/status');
     }
 
     async get(id: string): Promise<Status> {
-        return this.request<Status>(`/api/status/${id}`);
+        return this.baseHttpClient.request<Status>(`/api/status/${id}`);
     }
 
     async create(data: Partial<Status>): Promise<Status> {
-        return this.request<Status>('/api/status', {
+        return this.baseHttpClient.request<Status>('/api/status', {
             method: 'POST',
             body: JSON.stringify(data),
         });
     }
 
     async update(id: string, data: Partial<Status>): Promise<Status> {
-        return this.request<Status>(`/api/status/${id}`, {
+        return this.baseHttpClient.request<Status>(`/api/status/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(data),
         });
     }
 
     async delete(id: string): Promise<void> {
-        return this.request<void>(`/api/status/${id}`, {
+        return this.baseHttpClient.request<void>(`/api/status/${id}`, {
             method: 'DELETE',
         });
     }

@@ -6,7 +6,7 @@ export default function DashboardUser() {
     <DashboardViewWrapper
       title="Dashboard Users"
       id="dashboard-user"
-      createRoute="/back-office/dashboard/users/create"
+      createRoute="/back-office/dashboard/user/create"
     >
       <Outlet />
     </DashboardViewWrapper>

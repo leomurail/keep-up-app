@@ -10,14 +10,12 @@ export interface Status {
     id: number;
     slug: string;
     label: string;
-    airdropEvents?: AirdropEvent[];
 }
 
 export interface Category {
     id: number;
     slug: string;
     label: string;
-    airdropEvents?: AirdropEvent[];
 }
 
 export interface AirdropEventSocialMedia {
@@ -33,7 +31,6 @@ export interface SocialMedia {
     label: string;
     image?: Image | null;
     imageId?: number;
-    airdropEvent?: AirdropEventSocialMedia[];
 }
 
 export interface AirdropEvent {
@@ -51,8 +48,16 @@ export interface User {
     id: number;
     email: string;
     roles: string[];
-    password?: string; // Only for creation/update, usually not in response
+    password: string;
     token?: string | null;
+}
+
+export interface ApiKey {
+    id: number;
+    token: string;
+    name: string;
+    user: User;
+    createdAt: string;
 }
 
 // Request/Response types for specific endpoints

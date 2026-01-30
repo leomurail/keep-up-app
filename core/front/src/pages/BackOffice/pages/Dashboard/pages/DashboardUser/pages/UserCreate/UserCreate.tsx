@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import UserForm from "../../components/UserForm/UserForm";
-import { client } from "@/instance";
 import { useForm, type FieldValues } from "react-hook-form";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function UserCreate() {
     const form = useForm<FieldValues>({
@@ -15,12 +15,12 @@ export default function UserCreate() {
 
     const handleSubmit = async (data: any) => {
         try {
-            await client.users.create({
+            await keepUpClient.user.create({
                 email: data.email,
                 password: data.password,
                 roles: Array.isArray(data.roles) ? data.roles : [data.roles],
             });
-            navigate("/back-office/dashboard/users");
+            navigate("/back-office/dashboard/user/list");
         } catch (e) {
             console.error("Failed to create user", e);
         }

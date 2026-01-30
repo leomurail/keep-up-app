@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
-import { client } from "@/instance";
 import { Button } from "@/components/shadcdn/ui/button";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function AirdropDelete() {
   const { id } = useParams<{ id: string }>();
@@ -9,7 +9,7 @@ export default function AirdropDelete() {
   const handleDelete = async () => {
     if (!id) return;
     try {
-      await client.airdropEvents.delete(id);
+      await keepUpClient.airdropEvent.delete(id);
       navigate("/back-office/dashboard/airdrop/list");
     } catch (e) {
       console.error("Failed to delete airdrop", e);

@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: true,
-      port: Number(env.VITE_APP_PORT) || 3000,
-      allowedHosts: [env.VITE_APP_DOMAIN || ""],
+      port: Number(env.VITE_APP_PORT),
+      allowedHosts: [env.VITE_APP_DOMAIN],
     },
   }
 })

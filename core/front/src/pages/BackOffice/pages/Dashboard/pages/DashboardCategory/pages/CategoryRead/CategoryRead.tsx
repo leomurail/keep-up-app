@@ -6,8 +6,8 @@ import {
   TableCell,
   TableRow,
 } from "@/components/shadcdn/ui/table";
-import { client } from "@/instance";
 import type { Category } from "@/clients/KeepUpClient/Ressources/types";
+import { keepUpClient } from "@/pages/BackOffice/instances";
 
 export default function CategoryRead() {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +20,7 @@ export default function CategoryRead() {
 
     const fetchCategory = async () => {
       try {
-        const data = await client.categories.get(id);
+        const data = await keepUpClient.category.get(id);
         setCategory(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch category");
