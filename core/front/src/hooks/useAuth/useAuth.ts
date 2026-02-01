@@ -1,4 +1,4 @@
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 import { useNavigate } from "react-router";
 
 export function useAuth() {
@@ -15,12 +15,12 @@ export function useAuth() {
   }
 
   function logout() {
-    keepUpClient.baseHttpClient.clearToken();
+    keepUpClientApi.baseHttpClient.clearToken();
     navigate("/back-office/login");
   }
 
   function checkLogin() {
-    if (!keepUpClient.baseHttpClient.getToken()) {
+    if (!keepUpClientApi.baseHttpClient.getToken()) {
       navigate("/back-office/login");
     }
   }

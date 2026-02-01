@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { Button } from "@/components/shadcdn/ui/button";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function ApiKeyDelete() {
     const { id } = useParams<{ id: string }>();
@@ -9,7 +9,7 @@ export default function ApiKeyDelete() {
     const handleDelete = async () => {
         if (!id) return;
         try {
-            await keepUpClient.apiKey.delete(id);
+            await keepUpClientApi.apiKey.delete(id);
             navigate("/back-office/dashboard/api-key/list");
         } catch (e) {
             console.error("Failed to delete api key", e);

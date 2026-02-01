@@ -6,7 +6,7 @@ import {
     TableCell,
     TableRow,
 } from "@/components/shadcdn/ui/table";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 import type { ApiKey } from "@/clients/KeepUpClient/Ressources/types";
 
 export default function ApiKeyRead() {
@@ -19,7 +19,7 @@ export default function ApiKeyRead() {
         if (!id) return;
         const fetchApiKey = async () => {
             try {
-                const data = await keepUpClient.apiKey.get(id);
+                const data = await keepUpClientApi.apiKey.get(id);
                 setApiKey(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Failed to fetch apiKey");

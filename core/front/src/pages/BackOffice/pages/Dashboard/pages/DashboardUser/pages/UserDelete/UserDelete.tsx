@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { Button } from "@/components/shadcdn/ui/button";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function UserDelete() {
     const { id } = useParams<{ id: string }>();
@@ -9,7 +9,7 @@ export default function UserDelete() {
     const handleDelete = async () => {
         if (!id) return;
         try {
-            await keepUpClient.user.delete(id);
+            await keepUpClientApi.user.delete(id);
             navigate("/back-office/dashboard/user/list");
         } catch (e) {
             console.error("Failed to delete user", e);

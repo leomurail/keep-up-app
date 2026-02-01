@@ -1,4 +1,4 @@
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 import { useForm, type FieldValues } from "react-hook-form";
 import ApiKeyForm from "../../components/ApiKeyForm/ApiKeyForm";
 import TokenPopup from "../../../DashboardUser/pages/UserCreate/components/TokenPopup/TokenPopup";
@@ -19,7 +19,7 @@ export default function ApiKeyCreate() {
 
     const handleSubmit = async (data: any) => {
         try {
-            const { token } = await keepUpClient.apiKey.create({
+            const { token } = await keepUpClientApi.apiKey.create({
                 name: data.name
             });
             tokenRef.current = token;

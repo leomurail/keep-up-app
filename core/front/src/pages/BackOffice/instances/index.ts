@@ -1,1 +1,1 @@
-export * from './keepUpClient/keepUpClient';
+export * from './keepUpClientApi/keepUpClientApi';

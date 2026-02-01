@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "@/components/shadcdn/ui/table";
 import type { User } from "@/clients/KeepUpClient/Ressources/types";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function UserRead() {
     const { id } = useParams<{ id: string }>();
@@ -19,7 +19,7 @@ export default function UserRead() {
         if (!id) return;
         const fetchUser = async () => {
             try {
-                const data = await keepUpClient.user.get(id);
+                const data = await keepUpClientApi.user.get(id);
                 setUser(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Failed to fetch user");

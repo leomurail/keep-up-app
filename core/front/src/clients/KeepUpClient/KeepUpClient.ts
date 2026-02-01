@@ -38,9 +38,9 @@ export class KeepUpClient {
         this.apiKey = new ApiKeyResource(this.baseHttpClient);
     }
 
-    getBaseHttpClient(type: "BFF" | "API") {
+    getBaseHttpClient(type: "BFF" | "API"): BaseHttpClient | BaseHttpClientBff {
         return type === "BFF"
-            ? new BaseHttpClientBff(getConfig("VITE_BFF_URL"))
-            : new BaseHttpClient(getConfig("VITE_API_URL"));
+            ? new BaseHttpClientBff(getConfig("VITE_BFF_URL")) as BaseHttpClientBff
+            : new BaseHttpClient(getConfig("VITE_API_URL")) as BaseHttpClient;
     }
 }

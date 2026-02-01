@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import UserForm from "../../components/UserForm/UserForm";
 import { useForm, type FieldValues } from "react-hook-form";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function UserCreate() {
     const form = useForm<FieldValues>({
@@ -15,7 +15,7 @@ export default function UserCreate() {
 
     const handleSubmit = async (data: any) => {
         try {
-            await keepUpClient.user.create({
+            await keepUpClientApi.user.create({
                 email: data.email,
                 password: data.password,
                 roles: Array.isArray(data.roles) ? data.roles : [data.roles],

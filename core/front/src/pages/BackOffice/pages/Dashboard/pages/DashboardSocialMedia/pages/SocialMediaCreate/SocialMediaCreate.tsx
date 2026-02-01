@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import SocialMediaForm from "../../components/SocialMediaForm/SocialMediaForm";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function SocialMediaCreate() {
   const navigate = useNavigate();
@@ -11,11 +11,11 @@ export default function SocialMediaCreate() {
 
       if (data.file && data.file.length > 0 && data.file[0] instanceof File) {
         const file = data.file[0];
-        const uploadedImage = await keepUpClient.image.upload(file, "test alt");
+        const uploadedImage = await keepUpClientApi.image.upload(file, "test alt");
         imageId = uploadedImage.id;
       }
 
-      await keepUpClient.socialMedia.create({
+      await keepUpClientApi.socialMedia.create({
         label: data.name,
         slug: data.slug,
         imageId,

@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router";
 import StatusForm from "../../components/StatusForm/StatusForm";
 import type { FieldValues } from "react-hook-form";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function StatusCreate() {
     const navigate = useNavigate();
 
     const handleSubmit = async (data: FieldValues) => {
         try {
-            await keepUpClient.status.create({
+            await keepUpClientApi.status.create({
                 label: data.label,
                 slug: data.slug,
             });

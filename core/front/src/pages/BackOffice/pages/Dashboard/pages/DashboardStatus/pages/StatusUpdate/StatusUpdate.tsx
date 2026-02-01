@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import StatusForm from "../../components/StatusForm/StatusForm";
 import type { FieldValues } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function StatusUpdate() {
     const { id } = useParams<{ id: string }>();
@@ -20,7 +20,7 @@ export default function StatusUpdate() {
     useEffect(() => {
         if (!id) return;
 
-        keepUpClient.status.get(id).then((status) => {
+        keepUpClientApi.status.get(id).then((status) => {
             form.reset({
                 label: status.label,
                 slug: status.slug,
@@ -32,7 +32,7 @@ export default function StatusUpdate() {
     const handleSubmit = async (data: FieldValues) => {
         if (!id) return;
         try {
-            await keepUpClient.status.update(id, {
+            await keepUpClientApi.status.update(id, {
                 label: data.label,
                 slug: data.slug,
             });

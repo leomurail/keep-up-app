@@ -8,7 +8,7 @@ import {
 } from "@/components/shadcdn/ui/table";
 import type { SocialMedia } from "@/clients/KeepUpClient/Ressources/types";
 import { getConfig } from "@/utils";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function SocialMediaRead() {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +21,7 @@ export default function SocialMediaRead() {
 
     const fetchSocialMedia = async () => {
       try {
-        const data = await keepUpClient.socialMedia.get(id);
+        const data = await keepUpClientApi.socialMedia.get(id);
         setSocialMedia(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch social media");

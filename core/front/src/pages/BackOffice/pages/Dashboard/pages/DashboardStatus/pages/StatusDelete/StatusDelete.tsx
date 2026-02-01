@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { Button } from "@/components/shadcdn/ui/button";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function StatusDelete() {
     const { id } = useParams<{ id: string }>();
@@ -9,7 +9,7 @@ export default function StatusDelete() {
     const handleDelete = async () => {
         if (!id) return;
         try {
-            await keepUpClient.status.delete(id);
+            await keepUpClientApi.status.delete(id);
             navigate("/back-office/dashboard/status/list");
         } catch (e) {
             console.error("Failed to delete status", e);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../../../../components/DashboardCard/DashboardCard";
 import type { ApiKey } from "@/clients/KeepUpClient/Ressources/types";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function ApiKeyList() {
     const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
@@ -11,7 +11,7 @@ export default function ApiKeyList() {
     useEffect(() => {
         const fetchApiKeys = async () => {
             try {
-                const data = await keepUpClient.apiKey.list();
+                const data = await keepUpClientApi.apiKey.list();
                 setApiKeys(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Failed to fetch apiKeys");

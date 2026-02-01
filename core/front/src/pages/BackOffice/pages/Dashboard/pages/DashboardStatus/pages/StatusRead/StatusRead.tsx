@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "@/components/shadcdn/ui/table";
 import type { Status } from "@/clients/KeepUpClient/Ressources/types";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function StatusRead() {
     const { id } = useParams<{ id: string }>();
@@ -16,7 +16,7 @@ export default function StatusRead() {
 
     useEffect(() => {
         if (!id) return;
-        keepUpClient.status.get(id).then((data) => {
+        keepUpClientApi.status.get(id).then((data) => {
             setStatus(data);
         }).catch(console.error).finally(() => setLoading(false));
     }, [id]);

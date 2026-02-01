@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router";
 import CategoryForm from "../../components/CategoryForm/CategoryForm";
-import { keepUpClient } from "@/pages/BackOffice/instances";
+import { keepUpClientApi } from "@/pages/BackOffice/instances";
 
 export default function CategoryCreate() {
   const navigate = useNavigate();
 
   const handleSubmit = async (data: any) => {
     try {
-      await keepUpClient.category.create({
+      await keepUpClientApi.category.create({
         label: data.name,
         slug: data.slug,
       });

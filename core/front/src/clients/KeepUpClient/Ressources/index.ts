@@ -4,3 +4,6 @@ export * from './CategoryResource/CategoryResource';
 export * from './AirdropEventResource/AirdropEventResource';
 export * from './SocialMediaResource/SocialMediaResource';
 export * from './SystemResource/SystemResource';
+export * from './ImageResource/ImageResource';
+export * from './StatusResource/StatusResource';
+export * from './ApiKeyRessource/ApiKeyRessource';
