@@ -10,8 +10,7 @@ const API_TOKEN = process.env.API_TOKEN || "";
 const APP_URL = process.env.APP_URL || "";
 
 if (!API_TOKEN) {
-    console.error('ERROR: API_TOKEN is not defined in .env');
-    process.exit(1);
+    console.warn('WARNING: API_TOKEN is not defined in .env');
 }
 
 app.use(cors({
