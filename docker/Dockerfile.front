@@ -30,7 +30,10 @@ FROM nginx:stable-alpine AS production
 COPY ./docker/nginx/default.conf /etc/nginx/templates/default.conf.template
 COPY --from=build /app/dist /usr/share/nginx/html
 
-RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
-RUN chown -R nginx:nginx /etc/nginx/conf.d /var/cache/nginx /var/log/nginx /etc/nginx/nginx.conf
+RUN touch /var/run/nginx.pid && \
+    sed -i '/user  nginx;/d' /etc/nginx/nginx.conf && \
+    chown -R nginx:nginx /var/run/nginx.pid /etc/nginx /var/cache/nginx /var/log/nginx
+
 USER nginx
+
 CMD ["nginx", "-g", "daemon off;"]
