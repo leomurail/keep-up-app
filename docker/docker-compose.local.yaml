@@ -1,11 +1,5 @@
 services:
   app:
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - VITE_APP_PORT=${VITE_APP_PORT}
-      - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
-      - VITE_BFF_URL=${VITE_BFF_URL}
-      - VITE_API_URL=${VITE_API_URL}
     labels:
       - "traefik.http.routers.${APP_NAME}.entrypoints=web"
       - "traefik.http.routers.${APP_NAME}.tls=false"
