@@ -24,6 +24,11 @@ CMD ["npm", "run", "dev"]
 #———————————————————————————————————————————#
 FROM base AS build
 
+ARG NODE_ENV
+ARG VITE_API_URL
+ARG VITE_BFF_URL
+ARG VITE_APP_DOMAIN
+
 ENV NODE_ENV=${NODE_ENV}
 ENV VITE_API_URL=${VITE_API_URL}
 ENV VITE_BFF_URL=${VITE_BFF_URL}
