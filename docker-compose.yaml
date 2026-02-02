@@ -10,16 +10,13 @@ services:
       args:
         - NODE_ENV=${NODE_ENV}
         - VITE_APP_PORT=${VITE_APP_PORT}
+        - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
+        - VITE_BFF_URL=${VITE_BFF_URL}
+        - VITE_API_URL=${VITE_API_URL}
     volumes:
       - front-data:/app
       - /app/node_modules
       - /app/dist
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - VITE_APP_PORT=${VITE_APP_PORT}
-      - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
-      - VITE_BFF_URL=${VITE_BFF_URL}
-      - VITE_API_URL=${VITE_API_URL}
     networks:
       - traefik-net
     labels:

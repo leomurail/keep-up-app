@@ -23,6 +23,12 @@ CMD ["npm", "run", "dev"]
 # PROD                                      #
 #———————————————————————————————————————————#
 FROM base AS build
+
+ENV NODE_ENV=${NODE_ENV}
+ENV VITE_API_URL=${VITE_API_URL}
+ENV VITE_BFF_URL=${VITE_BFF_URL}
+ENV VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
+
 RUN npm run build
 
 FROM nginx:stable-alpine AS production
