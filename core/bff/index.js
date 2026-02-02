@@ -5,8 +5,8 @@ import cors from 'cors';
 const app = express();
 const BFF_PORT = process.env.BFF_PORT || 3001;
 
-const VITE_API_URL = process.env.VITE_API_URL;
-const API_TOKEN = process.env.API_TOKEN;
+const VITE_API_URL = process.env.VITE_API_URL || "";
+const API_TOKEN = process.env.API_TOKEN || "";
 const APP_URL = process.env.APP_URL || "";
 
 if (!API_TOKEN) {
