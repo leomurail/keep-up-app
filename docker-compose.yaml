@@ -19,10 +19,6 @@ services:
       - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
       - VITE_BFF_URL=${VITE_BFF_URL}
       - VITE_API_URL=${VITE_API_URL}
-    volumes:
-      - front-data:/app
-      - /app/node_modules
-      - /app/dist
     networks:
       - traefik-net
     labels:
@@ -39,9 +35,6 @@ services:
       target: ${NODE_ENV}
       context: .
       dockerfile: docker/Dockerfile.bff
-    volumes:
-      - bff-data:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=${NODE_ENV}
       - BFF_PORT=${BFF_PORT}
@@ -56,24 +49,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.${APP_NAME}-bff.rule=Host(`${BFF_DOMAIN}`)"
       - "traefik.http.routers.${APP_NAME}-bff.entrypoints=websecure"
-      - "traefik.http.routers.${APP_NAME}-bff.tls=true"
       - "traefik.http.routers.${APP_NAME}-bff.tls.certresolver=myresolver"
       - "traefik.http.services.${APP_NAME}-bff.loadbalancer.server.port=${BFF_PORT}"
 
 networks:
   traefik-net:
     external: true
-
-volumes:
-  front-data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${PWD}/core/front
-  bff-data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${PWD}/core/bff

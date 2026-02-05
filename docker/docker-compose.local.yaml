@@ -1,11 +1,32 @@
 services:
   app:
+
+    develop:
+      watch:
+        - action: sync
+          path: ./core/front
+          target: .
+          ignore:
+            - node_modules
+            - dist
+        - action: rebuild
+          path: ./core/front/package.json
+    ports:
+      - "${VITE_APP_PORT}:${VITE_APP_PORT}"
     labels:
-      - "traefik.http.routers.${APP_NAME}.entrypoints=web"
-      - "traefik.http.routers.${APP_NAME}.tls=false"
-      - "traefik.http.routers.${APP_NAME}.tls.certresolver="
+      - "traefik.http.routers.${APP_NAME}.tls=true"
   bff:
+
+    develop:
+      watch:
+        - action: sync
+          path: ./core/bff
+          target: .
+          ignore:
+            - node_modules
+        - action: rebuild
+          path: ./core/bff/package.json
+    ports:
+      - "${BFF_PORT}:${BFF_PORT}"
     labels:
-      - "traefik.http.routers.${APP_NAME}-bff.entrypoints=web"
-      - "traefik.http.routers.${APP_NAME}-bff.tls=false"
-      - "traefik.http.routers.${APP_NAME}-bff.tls.certresolver="
+      - "traefik.http.routers.${APP_NAME}-bff.tls=true"
