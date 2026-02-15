@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 @import "./shadcdn.css";
 @import "./keepup.css";
 @import "tw-animate-css";

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import "./AirdropListPart.css";
 import Button from "../../components/Button/Button";
 import CardAirdrop from "../../components/CardAirdrop/CardAirdrop";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import type { AirdropEvent } from "@/clients/KeepUpClient/Ressources/types";
 import { keepUpClientBff } from "../../instances";
 import { getConfig } from "@/utils";
+
+import "./AirdropListPart.css";
 
 export default function AirdropListPart() {
   const [airdrops, setAirdrops] = useState<AirdropEvent[]>([]);
@@ -29,20 +30,20 @@ export default function AirdropListPart() {
   }, []);
 
   return (
-    <section id="airdrop-list-part">
+    <section id="airdrop-list-part" className="container">
       <div id="airdrop-search-part">
         <h2>Les Airdrops les plus prometteurs </h2>
-        <SearchBar placeholder="Rechercher un airdrop..." />
+        <SearchBar placeholder="Rechercher un airdrop..." redirectOnSubmit={true} />
       </div>
-      <div id="aidrop-liste-content">
+      <div id="aidrop-liste-content" className="container">
         <h3>Notre Sélection</h3>
-        <div id="airdrops-cards-content">
+        <div id="airdrops-cards-content" className={airdrops.length === 0 || loading || error ? "airdrop-not-found" : ""}>
           {loading ? (
             <p>Chargement des airdrops...</p>
           ) : error ? (
             <p>Erreur: {error}</p>
           ) : (
-            airdrops ? airdrops.map((airdrop) => (
+            airdrops && airdrops.length > 0 ? airdrops.map((airdrop) => (
               <CardAirdrop
                 key={airdrop.id}
                 imgSrc={getConfig("VITE_API_URL") + "/api/image/content/" + airdrop.image?.src || "/img/webp/airdrop_project.webp"}

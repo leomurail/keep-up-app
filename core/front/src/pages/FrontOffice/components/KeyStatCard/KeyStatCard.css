@@ -32,7 +32,7 @@
   font-size: var(--font-size-20);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
   .key-stat {
     flex-direction: column;
     gap: 30px;

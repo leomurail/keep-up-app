@@ -15,6 +15,12 @@
   justify-content: center;
 }
 
+@media (max-width: 1300px) {
+  #how-it-works-part {
+    padding: 60px 20px;
+  }
+}
+
 @media (max-width: 768px) {
   #how-it-works-part {
     padding: 60px 20px;

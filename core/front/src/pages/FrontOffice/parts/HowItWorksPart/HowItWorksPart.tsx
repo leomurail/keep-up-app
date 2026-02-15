@@ -4,7 +4,7 @@ import HowItWorkCard from "../../components/HowItWorkCard/HowItWorkCard";
 
 export default function HowItWorksPart() {
   return (
-    <section id="how-it-works-part">
+    <section id="how-it-works-part" className="container">
       <h2>Comment ça marche ?</h2>
       <div className="how-it-works-step">
         <HowItWorkCard text="Connecte ton Telegram" number={1} />

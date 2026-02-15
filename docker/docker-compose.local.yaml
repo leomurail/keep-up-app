@@ -1,32 +1,32 @@
 services:
   app:
-
     develop:
       watch:
         - action: sync
           path: ./core/front
-          target: .
+          target: /app
           ignore:
             - node_modules
             - dist
         - action: rebuild
           path: ./core/front/package.json
+        - action: restart
+          path: .env
     ports:
       - "${VITE_APP_PORT}:${VITE_APP_PORT}"
-    labels:
-      - "traefik.http.routers.${APP_NAME}.tls=true"
   bff:
-
+    environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=${NODE_TLS_REJECT_UNAUTHORIZED}
     develop:
       watch:
         - action: sync
           path: ./core/bff
-          target: .
+          target: /app
           ignore:
             - node_modules
         - action: rebuild
           path: ./core/bff/package.json
+        - action: restart
+          path: .env
     ports:
       - "${BFF_PORT}:${BFF_PORT}"
-    labels:
-      - "traefik.http.routers.${APP_NAME}-bff.tls=true"

@@ -9,13 +9,41 @@
   justify-content: center;
   text-align: center;
   gap: var(--gap-large-l);
-  padding: 140px 0 40px 0;
+  padding: 180px 0 100px 0;
+  position: relative;
 }
 
 #hero-part .round-btn {
   position: absolute;
-  top: 95%;
-  left: 95%;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#hero-part .round-btn:hover {
+  background-color: var(--color-light-purple);
+  transform: translateX(-50%) translateY(5px);
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 .hero-content {
@@ -83,24 +111,51 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
   #hero-part {
-    padding: var(--gap-large-m) var(--gap-small-m) var(--gap-large-m) var(--gap-small-m);
-    gap: var(--gap-medium-l);
-  }
-
-  .hero-content {
-    padding-bottom: var(--gap-medium-s);
-    gap: var(--gap);
+    padding: 140px 20px 100px 20px;
   }
 
   .hero-content-logo-title .hero-title {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .hero-container-cards {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-part {
+    padding: 140px 20px 60px 20px;
+    gap: 40px;
+    background-image: none;
+    background-color: var(--color-layer-0, #121212);
+  }
+
+  .hero-content {
+    padding-bottom: 20px;
+    gap: 30px;
+  }
+
+  .hero-content-logo-title .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
   }
 
   .hero-content-logo-title .hero-logo {
-    width: 120px;
+    width: 100px;
+  }
+
+  .hero-content-text .hero-text-claim {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .hero-content-text .hero-text-instal {
+    font-size: 14px;
+    opacity: 0.8;
   }
 
   #hero-part .round-btn {
@@ -108,15 +163,21 @@
   }
 
   .hero-buttons {
+    flex-direction: column;
     width: 100%;
+    gap: 15px;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-container-cards {
     width: 100%;
-    align-items: center;
-    gap: var(--gap-small-m);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 
   .hero-container-cards .hero-card-text {

@@ -34,13 +34,25 @@
   gap: 20px;
 }
 
-@media (max-width: 1024px) {
+#airdrops-cards-content.airdrop-not-found {
+  display: flex;
+}
+
+#airdrops-cards-content.airdrop-not-found p {
+  color: var(--color-text-secondary);
+  background-color: var(--color-layer-1);
+  padding: 20px;
+  width: 100%;
+  border-radius: var(--radius-sm)
+}
+
+@media (max-width: 1300px) {
   #airdrops-cards-content {
     grid-template-columns: repeat(2, 1fr);
   }
 
   #airdrop-list-part {
-    padding: 60px;
+    padding: 60px 20px;
   }
 }
 

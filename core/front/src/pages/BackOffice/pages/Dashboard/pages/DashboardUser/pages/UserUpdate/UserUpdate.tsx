@@ -23,6 +23,7 @@ export default function UserUpdate() {
                 const data = await keepUpClientApi.user.get(id);
                 form.reset({
                     email: data.email,
+                    password: "",
                     roles: data.roles,
                 });
             } catch (e) {
@@ -37,6 +38,7 @@ export default function UserUpdate() {
         try {
             await keepUpClientApi.user.update(id, {
                 email: data.email,
+                password: data.password,
                 roles: data.roles
             });
             navigate("/back-office/dashboard/user/list");

@@ -12,6 +12,10 @@
 
 .btn span {
   font-weight: var(--font-weight-label) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-small-xl);
 }
 
 .btn.primary {
@@ -20,6 +24,10 @@
 
 .btn.secondary {
   background-color: var(--color-pink);
+}
+
+.btn.flatten {
+  background-color: transparent;
 }
 
 .btn.l {

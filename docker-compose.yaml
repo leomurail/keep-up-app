@@ -19,14 +19,12 @@ services:
       - VITE_APP_DOMAIN=${VITE_APP_DOMAIN}
       - VITE_BFF_URL=${VITE_BFF_URL}
       - VITE_API_URL=${VITE_API_URL}
+      - VITE_WALLET_CONNECT_PROJECT_ID=${VITE_WALLET_CONNECT_PROJECT_ID}
     networks:
       - traefik-net
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.${APP_NAME}.rule=Host(`${VITE_APP_DOMAIN}`)"
-      - "traefik.http.routers.${APP_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.${APP_NAME}.tls=true"
-      - "traefik.http.routers.${APP_NAME}.tls.certresolver=myresolver"
       - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=${VITE_APP_PORT}"
   bff:
     container_name: ${APP_NAME}-bff.${NODE_ENV}
@@ -48,8 +46,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.${APP_NAME}-bff.rule=Host(`${BFF_DOMAIN}`)"
-      - "traefik.http.routers.${APP_NAME}-bff.entrypoints=websecure"
-      - "traefik.http.routers.${APP_NAME}-bff.tls.certresolver=myresolver"
       - "traefik.http.services.${APP_NAME}-bff.loadbalancer.server.port=${BFF_PORT}"
 
 networks:

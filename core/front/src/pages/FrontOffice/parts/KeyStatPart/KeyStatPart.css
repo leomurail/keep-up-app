@@ -11,6 +11,12 @@
   text-align: center;
 }
 
+@media (max-width: 1300px) {
+  #key-stat-part {
+    padding: 100px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   #key-stat-part {
     padding: 60px 20px;

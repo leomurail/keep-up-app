@@ -1,0 +1,46 @@
+.legal-notice-page {
+    padding-top: 140px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large-s);
+}
+
+.legal-notice-page h1 {
+    text-align: center;
+    margin-bottom: var(--gap-medium-sm);
+}
+
+.legal-notice-page .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium-sm);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-notice-page section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.legal-notice-page h1,
+.legal-notice-page h2 {
+    color: white;
+}
+
+.legal-notice-page p {
+    font-size: var(--font-size-16);
+    line-height: 1.6;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .legal-notice-page {
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

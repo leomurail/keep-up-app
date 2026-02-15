@@ -4,11 +4,11 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   type?: "button";
-  variant?: "primary" | "secondary" | "toggle";
+  variant?: "primary" | "secondary" | "flatten";
   size?: "s" | "m" | "l";
-  imgSrc?: string; // chemin de l'image (optionnel)
-  imgAlt?: string; // texte alternatif (optionnel)
-  imgPosition?: "left" | "right"; // position optionnelle de l'image
+  imgSrc?: string;
+  imgAlt?: string;
+  imgPosition?: "left" | "right";
 }
 
 export default function Button({

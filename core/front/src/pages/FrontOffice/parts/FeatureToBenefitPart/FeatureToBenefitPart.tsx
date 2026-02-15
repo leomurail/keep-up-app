@@ -3,7 +3,7 @@ import CardFeature from "../../components/CardFeature/CardFeature";
 
 export default function FeatureToBenefitPart() {
   return (
-    <section id="feature-to-benefit-part">
+    <section id="feature-to-benefit-part" className="container">
       <h2>Ne loupez plus d’opportunités</h2>
       <div className="feature-to-benefit-step">
         <CardFeature

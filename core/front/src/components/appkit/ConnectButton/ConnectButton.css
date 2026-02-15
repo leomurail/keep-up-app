@@ -1,0 +1,46 @@
+.connect-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+    white-space: nowrap;
+}
+
+.connect-button:hover {
+    background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.connect-button:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+}
+
+.connect-button svg {
+    transition: transform 0.3s ease;
+}
+
+.connect-button:hover svg {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.connect-button:disabled {
+    background: #4b5563;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}

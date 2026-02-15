@@ -12,10 +12,7 @@ interface UserFormProps {
 
 const ROLE_OPTIONS = [
     { value: "ROLE_USER", label: "User" },
-    { value: "ROLE_ADMIN", label: "Admin" },
     { value: "ROLE_SUPER_ADMIN", label: "Super Admin" },
-    { value: "ROLE_MODERATOR", label: "Moderator" },
-    { value: "ROLE_EDITOR", label: "Editor" },
 ];
 
 export default function UserForm({ form, onSubmit }: UserFormProps) {

@@ -18,6 +18,11 @@ export default defineConfig(({ mode }) => {
       host: true,
       port: Number(env.VITE_APP_PORT),
       allowedHosts: [env.VITE_APP_DOMAIN],
+      hmr: {
+        host: env.VITE_APP_DOMAIN,
+        protocol: 'wss',
+        clientPort: 443
+      }
     },
   }
 })

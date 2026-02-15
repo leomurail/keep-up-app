@@ -1,12 +1,19 @@
-import "./HeroParte.css";
+import "./HeroPart.css";
 import Button from "../../components/Button/Button";
 import HeroCard from "../../components/HeroCard/HeroCard";
 import RoundButton from "../../components/RoundButton/RoundButton";
 
 export default function Header() {
+  const scrollToNext = () => {
+    const nextSection = document.getElementById("airdrop-list-part");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="hero-part">
-      <RoundButton />
+      <RoundButton onClick={scrollToNext} />
       <div className="hero-content">
         <div className="hero-content-logo-title">
           <img

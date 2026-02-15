@@ -1,40 +1,30 @@
-# app page
+# Keep Up API
 
-## Prerequisites
-- Docker
-- Docker Compose
-- Make
-
-## Environment variables
-You can config the app settings in `./.env` file.
+## Getting Started
 
 ## Installation
 
-### Install & start services
 ```bash
-make up
-```
-Go to http://app.keep-up.local
-
-### Uninstall & stop services
-```bash
-make down
+make install
 ```
 
-## Services
+## Development
 
-### Start
 ```bash
-make start
-```
-Go to http://app.keep-up.local
-
-### Stop
-```bash
-make stop
+make watch
 ```
 
-## Clean
+go to https://app.keep-up.traefik.me
+
+## Help
+
 ```bash
-make clean
+make help
 ```
+
+## Routes
+
+- /api/airdrop-event (CRUD)
+- /api/category (CRUD)
+- /api/social-media (CRUD)
+- /api/user (CRUD)
